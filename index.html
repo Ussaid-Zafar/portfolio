@@ -31,23 +31,23 @@
     font-size: 16px;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    position: relative;
   }
   ::selection { background: rgba(249,115,22,.13); }
 
   /* ── PAINT SPLATTERS ─────────────────────────────────── */
   .splat {
-    position: fixed; pointer-events: none; z-index: 0;
+    position: absolute; pointer-events: none; z-index: 0;
   }
   .splat-1 {
-    width: 700px;
-    top: -50px; right: -90px;
+    width: 660px;
+    top: 60px; right: -80px;
     opacity: .13;
   }
   .splat-2 {
-    width: 500px;
-    bottom: -30px; left: -70px;
-    opacity: .10;
-    transform: rotate(-20deg) scaleX(-1);
+    width: 520px;
+    top: 1700px; left: -60px;
+    opacity: .11;
   }
 
   /* keep all content above splatters */
@@ -355,16 +355,39 @@
   .rc p { font-size: 14.5px; color: var(--body); line-height: 1.75; }
 
   /* ── STACK ───────────────────────────────────────────── */
-  .stack-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .stack-row { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
   .stag {
     font-size: 14px; font-weight: 500; color: var(--ink);
     padding: 10px 18px; border-radius: 8px;
     background: var(--surf); border: 1px solid var(--border);
     transition: all .2s; cursor: default;
+    display: inline-flex; align-self: flex-start;
   }
   .stag:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
   .stag span { color: var(--muted); font-weight: 400; }
   .stag:hover span { color: rgba(255,255,255,.4); }
+
+  /* GHL featured card */
+  .ghl-card {
+    background: var(--a-soft); border: 1px solid rgba(249,115,22,.3);
+    border-left: 4px solid var(--accent);
+    border-radius: 12px; padding: 22px 26px;
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    transition: box-shadow .2s;
+  }
+  .ghl-card:hover { box-shadow: 0 6px 24px rgba(249,115,22,.1); }
+  .ghl-card-left { display: flex; flex-direction: column; gap: 6px; }
+  .ghl-tag { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+  .ghl-name { font-family: 'Space Grotesk'; font-size: 22px; font-weight: 700; color: var(--ink); }
+  .ghl-desc { font-size: 14px; color: var(--body); max-width: 480px; line-height: 1.7; margin-top: 4px; }
+  .ghl-badges { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; align-self: center; }
+  .ghl-badge {
+    font-size: 11.5px; font-weight: 600; color: var(--accent);
+    background: rgba(249,115,22,.1); border: 1px solid rgba(249,115,22,.25);
+    padding: 5px 12px; border-radius: 100px;
+  }
+  .other-tools { display: flex; flex-wrap: wrap; gap: 10px; }
 
   /* ── OUTCOMES ────────────────────────────────────────── */
   .out-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
@@ -446,34 +469,42 @@
     <circle cx="532" cy="146" r="3"/>
   </svg>
 
-  <!-- paint splatter 2: bottom-left (mirrored, smaller) -->
-  <svg class="splat splat-2" viewBox="0 0 620 520" fill="#f97316" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- central blob -->
-    <path d="M290 230 C310 206 346 196 370 210 C394 224 402 252 394 278 C386 304 364 318 340 316 C316 314 294 298 286 274 C278 250 282 238 290 230Z"/>
-    <!-- main arm -->
-    <path d="M394 258 C428 250 468 240 506 234 C534 228 558 224 578 222 C556 226 532 232 506 238 C466 246 426 258 396 270Z"/>
-    <!-- upper arm -->
-    <path d="M344 202 C342 174 342 140 344 112 C346 90 350 70 354 56 C352 74 348 94 348 116 C348 144 348 178 350 206Z"/>
-    <!-- lower-left drip -->
-    <path d="M286 272 C258 280 224 290 190 296 C166 300 144 302 126 302 C146 298 168 294 192 290 C226 282 260 270 288 260Z"/>
-    <!-- right drops -->
-    <circle cx="590" cy="220" r="14"/>
-    <circle cx="610" cy="216" r="8"/>
-    <circle cx="568" cy="226" r="5"/>
-    <!-- top drops -->
-    <circle cx="354" cy="44" r="13"/>
-    <circle cx="356" cy="26" r="7"/>
-    <circle cx="350" cy="12" r="4"/>
-    <!-- left drops -->
-    <circle cx="110" cy="302" r="11"/>
-    <circle cx="92" cy="304" r="6"/>
-    <circle cx="78" cy="308" r="4"/>
-    <!-- scattered -->
-    <circle cx="470" cy="238" r="5"/>
-    <circle cx="440" cy="244" r="4"/>
-    <circle cx="416" cy="238" r="3"/>
-    <circle cx="374" cy="194" r="4"/>
-    <circle cx="320" cy="200" r="3"/>
+  <!-- paint splatter 2: mid-left — completely different shape, arms going right & upward -->
+  <svg class="splat splat-2" viewBox="0 0 680 560" fill="#f97316" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- central blob — wider & more horizontal than splat-1 -->
+    <path d="M220 290 C248 258 302 244 344 260 C386 276 400 320 386 358 C372 396 328 412 286 400 C244 388 214 354 210 318 C206 290 214 298 220 290Z"/>
+    <!-- main arm going right -->
+    <path d="M386 318 C432 308 484 296 534 286 C572 278 610 272 644 268 C610 274 572 282 534 292 C482 304 430 318 388 332Z"/>
+    <!-- arm going upper-right diagonally -->
+    <path d="M344 260 C372 230 408 200 448 176 C480 156 514 142 544 132 C514 146 482 162 450 184 C410 208 374 238 346 270Z"/>
+    <!-- thin arm going straight up -->
+    <path d="M268 246 C264 210 262 168 264 130 C266 102 270 78 274 58 C272 80 270 104 270 132 C268 170 270 214 272 250Z"/>
+    <!-- short arm lower-right -->
+    <path d="M386 360 C418 370 454 380 490 386 C516 390 540 392 558 392 C538 390 514 386 490 380 C454 372 418 360 388 346Z"/>
+    <!-- right end drops -->
+    <circle cx="656" cy="266" r="17"/>
+    <circle cx="680" cy="260" r="10"/>
+    <circle cx="626" cy="272" r="6"/>
+    <circle cx="600" cy="278" r="4"/>
+    <!-- upper-right drops -->
+    <circle cx="556" cy="128" r="19"/>
+    <circle cx="580" cy="116" r="11"/>
+    <circle cx="600" cy="106" r="6"/>
+    <circle cx="570" cy="100" r="4"/>
+    <!-- straight-up arm drops -->
+    <circle cx="272" cy="44" r="14"/>
+    <circle cx="270" cy="24" r="8"/>
+    <circle cx="274" cy="8" r="4"/>
+    <!-- lower-right drops -->
+    <circle cx="570" cy="392" r="12"/>
+    <circle cx="592" cy="394" r="7"/>
+    <!-- scattered micro drops -->
+    <circle cx="508" cy="292" r="5"/>
+    <circle cx="466" cy="300" r="4"/>
+    <circle cx="440" cy="288" r="3"/>
+    <circle cx="418" cy="196" r="5"/>
+    <circle cx="394" cy="212" r="3"/>
+    <circle cx="372" cy="246" r="3"/>
   </svg>
 
   <!-- ── NAV ── -->
@@ -559,7 +590,8 @@
         </div>
         <div class="panel-rows">
           <div class="pr"><span class="pk">Focus</span><span class="pv">Systems Architecture</span></div>
-          <div class="pr"><span class="pk">Platforms</span><span class="pv">GHL · Monday · Make</span></div>
+          <div class="pr" style="border-color:rgba(249,115,22,.3);background:var(--a-soft)"><span class="pk">Primary Platform</span><span class="pv" style="color:var(--accent)">GoHighLevel</span></div>
+          <div class="pr"><span class="pk">Also uses</span><span class="pv">Monday · Make · Stripe</span></div>
           <div class="pr"><span class="pk">Builds</span><span class="pv">Forms &amp; Funnels</span></div>
           <div class="pr"><span class="pk">Location</span><span class="pv">Remote</span></div>
           <div class="pr"><span class="pk">Availability</span><span class="pv">Open for work</span></div>
@@ -740,10 +772,26 @@
       </div>
       <h2>Tools in play.</h2>
       <div class="stack-row">
-        <div class="stag">GoHighLevel <span>// CRM + automation</span></div>
-        <div class="stag">Monday.com <span>// exec reporting</span></div>
-        <div class="stag">Make <span>// integration layer</span></div>
-        <div class="stag">Stripe <span>// payments</span></div>
+        <!-- GHL featured -->
+        <div class="ghl-card">
+          <div class="ghl-card-left">
+            <span class="ghl-tag">Primary Platform</span>
+            <span class="ghl-name">GoHighLevel</span>
+            <span class="ghl-desc">The core of every client build — CRM pipelines, automated workflows, intake forms, funnels, SMS/email sequences, and reporting, all in one place.</span>
+          </div>
+          <div class="ghl-badges">
+            <span class="ghl-badge">CRM</span>
+            <span class="ghl-badge">Automation</span>
+            <span class="ghl-badge">Funnels</span>
+            <span class="ghl-badge">Forms</span>
+          </div>
+        </div>
+        <!-- supporting tools -->
+        <div class="other-tools">
+          <div class="stag">Monday.com <span>// exec dashboards &amp; reporting</span></div>
+          <div class="stag">Make <span>// cross-platform integration</span></div>
+          <div class="stag">Stripe <span>// payments</span></div>
+        </div>
       </div>
     </section>
 
