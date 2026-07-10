@@ -34,14 +34,13 @@
   }
   ::selection { background: rgba(249,115,22,.13); }
 
-  /* ── NAV ─────────────────────────────────── */
+  /* ── NAV ─────────────────────────────────────────────── */
   header {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,.94);
+    background: rgba(255,255,255,.95);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
-  /* animated orange stripe */
   header::before {
     content: '';
     position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -52,146 +51,238 @@
   @keyframes shimmer { to { background-position: -300% center; } }
 
   .nav-inner {
-    max-width: 1400px; margin: 0 auto; padding: 0 60px;
+    max-width: 1440px; margin: 0 auto; padding: 0 56px;
     display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
+    height: 68px;
   }
-  .brandmark {
-    font-family: 'Space Grotesk'; font-weight: 700; font-size: 15px;
-    color: var(--ink); letter-spacing: -.01em;
-    display: flex; align-items: center; gap: 8px;
+
+  /* brand: box + name + sub */
+  .brandmark { display: flex; align-items: center; gap: 14px; }
+  .brand-box {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk'; font-size: 14px; font-weight: 700;
+    color: #fff; letter-spacing: -.02em; flex-shrink: 0;
   }
-  .brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-  .navlinks { display: flex; gap: 36px; }
+  .brand-box:hover { background: var(--accent); transition: background .2s; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .bn { font-family: 'Space Grotesk'; font-weight: 700; font-size: 15px; color: var(--ink); letter-spacing: -.01em; }
+  .br { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .01em; }
+
+  /* numbered nav links */
+  .navlinks { display: flex; gap: 30px; }
   .navlinks a {
-    color: var(--muted); text-decoration: none;
-    font-size: 14px; font-weight: 500; transition: color .2s;
+    color: var(--body); text-decoration: none;
+    font-size: 13.5px; font-weight: 500;
+    display: flex; align-items: center; gap: 5px;
+    transition: color .2s;
   }
+  .navlinks a .n { font-size: 11px; color: var(--accent); font-weight: 600; }
   .navlinks a:hover { color: var(--ink); }
-  @media (max-width: 640px) { .navlinks { display: none; } }
+  @media (max-width: 700px) { .navlinks { display: none; } }
 
-  /* ── LAYOUT ──────────────────────────────── */
-  .wrap { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
-  @media (max-width: 768px) { .wrap { padding: 0 24px; } .nav-inner { padding: 0 24px; } }
-
-  /* ── HERO ────────────────────────────────── */
-  .hero-shell { border-bottom: 1px solid var(--border); }
-  .hero {
-    max-width: 1400px; margin: 0 auto; padding: 100px 60px;
-    display: grid;
-    grid-template-columns: 1fr 390px;
-    gap: 80px; align-items: center;
-    position: relative;
-    min-height: calc(100vh - 64px);
-  }
-  @media (max-width: 1020px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; padding: 72px 60px; }
-    .hero-panel { display: none; }
-  }
-  @media (max-width: 768px) { .hero { padding: 60px 24px; } }
-
-  /* big watermark behind hero */
-  .wm {
-    position: absolute; bottom: 0; left: 60px;
-    font-family: 'Space Grotesk'; font-weight: 700;
-    font-size: clamp(100px, 18vw, 220px);
-    line-height: 1; letter-spacing: -.06em;
-    color: rgba(0,0,0,.025);
-    pointer-events: none; user-select: none;
+  /* available badge */
+  .avail-badge {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 12px; font-weight: 600; color: #166534;
+    background: #dcfce7; border: 1px solid #bbf7d0;
+    padding: 6px 14px; border-radius: 100px;
     white-space: nowrap;
   }
+  .avail-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 2px rgba(34,197,94,.25);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 2px rgba(34,197,94,.25); }
+    50%      { box-shadow: 0 0 0 5px rgba(34,197,94,.1); }
+  }
+  @media (max-width: 860px) { .avail-badge { display: none; } }
 
-  .hero-content { position: relative; z-index: 1; }
+  /* ── HERO ────────────────────────────────────────────── */
+  .hero-shell {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  /* — display name row — */
+  .dn-row {
+    max-width: 1440px; margin: 0 auto;
+    padding: 56px 56px 0;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px;
+  }
+  @media (max-width: 768px) { .dn-row { padding: 40px 24px 0; } }
+
+  h1.display-name {
+    font-family: 'Space Grotesk'; font-weight: 700;
+    font-size: clamp(56px, 10.5vw, 148px);
+    line-height: .95; letter-spacing: -.045em; color: var(--ink);
+    flex-shrink: 0;
+  }
+  h1.display-name em {
+    font-style: normal; color: var(--accent);
+    background: none; -webkit-text-fill-color: var(--accent);
+  }
+
+  .dn-badge {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+    padding-bottom: 8px; flex-shrink: 0;
+  }
+  .dn-badge .db-tag {
+    font-size: 11.5px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .13em; color: var(--muted);
+  }
+  .dn-badge .db-role {
+    font-family: 'Space Grotesk'; font-size: 15px; font-weight: 600; color: var(--ink);
+  }
+  @media (max-width: 900px) { .dn-badge { display: none; } }
+
+  /* thin divider below name */
+  .dn-divider {
+    max-width: 1440px; margin: 20px auto 0; padding: 0 56px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  @media (max-width: 768px) { .dn-divider { padding: 0 24px; } }
+  .dn-divider hr {
+    flex: 1; border: none; border-top: 1.5px solid var(--border);
+  }
+  .dn-divider .dn-yr {
+    font-size: 12px; font-weight: 600; color: var(--muted);
+    letter-spacing: .08em; white-space: nowrap;
+  }
+
+  /* — main hero grid — */
+  .hero-grid {
+    max-width: 1440px; margin: 0 auto;
+    padding: 48px 56px 56px;
+    display: grid; grid-template-columns: 1fr 380px;
+    gap: 64px; align-items: start;
+  }
+  @media (max-width: 1060px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-panel { display: none; }
+  }
+  @media (max-width: 768px) { .hero-grid { padding: 36px 24px 40px; } }
 
   .eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 12px; font-weight: 600; color: var(--accent);
     text-transform: uppercase; letter-spacing: .14em;
-    margin-bottom: 30px;
+    margin-bottom: 22px;
   }
-  .ey-line { width: 28px; height: 2px; background: var(--accent); flex-shrink: 0; }
+  .ey-line { width: 24px; height: 2px; background: var(--accent); flex-shrink: 0; }
 
-  h1 {
+  .hero-tagline {
     font-family: 'Space Grotesk'; font-weight: 700;
-    font-size: clamp(44px, 5.8vw, 72px);
-    line-height: 1.05; letter-spacing: -.03em; color: var(--ink);
-    margin-bottom: 26px;
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.18; letter-spacing: -.02em; color: var(--ink);
+    margin-bottom: 22px; max-width: 580px;
   }
-  /* underline highlight on key phrase */
   .hl {
-    background: linear-gradient(to bottom, transparent 60%, rgba(249,115,22,.22) 60%);
-    padding-bottom: 3px;
+    background: linear-gradient(to bottom, transparent 62%, rgba(249,115,22,.22) 62%);
+    padding-bottom: 2px;
   }
 
   .lede {
-    font-size: 17.5px; color: var(--body);
-    max-width: 540px; margin-bottom: 40px; line-height: 1.8;
+    font-size: 16.5px; color: var(--body);
+    max-width: 520px; margin-bottom: 36px; line-height: 1.82;
   }
 
-  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 54px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 48px; }
   .btn {
-    font-size: 14px; font-weight: 600; text-decoration: none;
-    padding: 12px 24px; border-radius: 8px; transition: all .2s;
+    font-size: 13.5px; font-weight: 600; text-decoration: none;
+    padding: 12px 22px; border-radius: 8px; transition: all .2s;
   }
   .btn-primary { background: var(--ink); color: #fff; }
   .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
   .btn-ghost { color: var(--ink); border: 1.5px solid var(--border); }
   .btn-ghost:hover { border-color: var(--ink); }
 
+  /* meta strip */
   .meta-strip {
-    display: flex; flex-wrap: wrap; gap: 32px;
-    padding-top: 38px; border-top: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; gap: 28px;
+    padding-top: 36px; border-top: 1px solid var(--border);
   }
-  .mi .mk { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 5px; }
-  .mi .mv { font-size: 15px; font-weight: 600; color: var(--ink); }
+  .mi .mk { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 4px; }
+  .mi .mv { font-size: 14px; font-weight: 600; color: var(--ink); }
 
-  /* right panel */
+  /* right info panel */
   .hero-panel {
     background: var(--off); border: 1px solid var(--border);
-    border-radius: 20px; padding: 28px;
-    position: relative; z-index: 1;
+    border-radius: 18px; padding: 26px;
+    position: sticky; top: 84px;
   }
   .panel-head {
     display: flex; align-items: center; gap: 8px;
     font-size: 11px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .12em; color: var(--muted); margin-bottom: 18px;
+    letter-spacing: .12em; color: var(--muted); margin-bottom: 16px;
   }
-  .panel-live { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px rgba(34,197,94,.5); }
-  .panel-rows { display: flex; flex-direction: column; gap: 10px; }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px rgba(34,197,94,.5); }
+  .panel-rows { display: flex; flex-direction: column; gap: 8px; }
   .pr {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 13px 16px; background: var(--white);
-    border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 14px; background: var(--white);
+    border: 1px solid var(--border); border-radius: 9px;
   }
-  .pr .pk { font-size: 11.5px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .07em; }
+  .pr .pk { font-size: 11px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .07em; }
   .pr .pv { font-size: 13px; color: var(--ink); font-weight: 600; }
   .panel-link {
     display: block; text-align: center; text-decoration: none;
-    margin-top: 18px; padding: 14px;
+    margin-top: 14px; padding: 13px;
     background: var(--ink); color: #fff;
-    border-radius: 10px; font-size: 13.5px; font-weight: 600;
+    border-radius: 9px; font-size: 13px; font-weight: 600;
     transition: background .2s;
+    word-break: break-all;
   }
   .panel-link:hover { background: var(--accent); }
 
-  /* ── SECTION SHELL ───────────────────────── */
+  /* — scrolling skill ticker — */
+  .ticker-wrap {
+    background: var(--surf);
+    border-top: 1px solid var(--border);
+    overflow: hidden;
+    padding: 15px 0;
+  }
+  .ticker-track {
+    display: flex; align-items: center;
+    width: max-content;
+    animation: tick 28s linear infinite;
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+  @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .tk-item {
+    display: flex; align-items: center; gap: 20px;
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--muted); white-space: nowrap;
+    padding-right: 20px;
+  }
+  .tk-sep { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+  /* ── WRAP & SECTIONS ─────────────────────────────────── */
+  .wrap { max-width: 1440px; margin: 0 auto; padding: 0 56px; }
+  @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+
   hr.rule { border: none; border-top: 1px solid var(--border); }
   section { padding: 88px 0; }
 
   .sl { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-  .sl-num { font-family: 'Space Grotesk'; font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
+  .sl-num { font-family: 'Space Grotesk'; font-size: 12px; font-weight: 700; color: var(--accent); }
   .sl-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
-  .sl-tag { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .13em; color: var(--muted); }
+  .sl-tag { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .13em; color: var(--muted); }
 
   h2 {
     font-family: 'Space Grotesk'; font-weight: 700;
-    font-size: clamp(28px, 3.6vw, 44px);
+    font-size: clamp(28px, 3.4vw, 44px);
     letter-spacing: -.02em; color: var(--ink); line-height: 1.1;
     margin-bottom: 18px;
   }
   p.bt { color: var(--body); font-size: 16.5px; max-width: 680px; line-height: 1.8; }
 
-  /* ── PROBLEM: 2-col split ────────────────── */
+  /* ── PROBLEM SPLIT ───────────────────────────────────── */
   .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   @media (max-width: 820px) { .split { grid-template-columns: 1fr; gap: 40px; } }
 
@@ -206,11 +297,8 @@
   .fault-list li:hover { border-color: #fca5a5; box-shadow: 0 4px 12px rgba(239,68,68,.06); }
   .mark { color: var(--red); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-  /* ── ARCHITECTURE: bento ─────────────────── */
-  .bento {
-    margin-top: 44px;
-    display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
-  }
+  /* ── BENTO ───────────────────────────────────────────── */
+  .bento { margin-top: 44px; display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
   @media (max-width: 820px) { .bento { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 520px) { .bento { grid-template-columns: 1fr; } }
 
@@ -219,15 +307,11 @@
     border-radius: 16px; padding: 28px;
     transition: border-color .25s, box-shadow .25s, transform .25s;
   }
-  .bc:hover {
-    border-color: rgba(249,115,22,.38);
-    box-shadow: 0 8px 30px rgba(249,115,22,.07);
-    transform: translateY(-4px);
-  }
+  .bc:hover { border-color: rgba(249,115,22,.4); box-shadow: 0 8px 30px rgba(249,115,22,.07); transform: translateY(-4px); }
   .bc.live { background: var(--a-soft); border-color: rgba(249,115,22,.2); }
   .bc.live:hover { border-color: rgba(249,115,22,.55); box-shadow: 0 8px 30px rgba(249,115,22,.12); }
   .bc-id { font-size: 10.5px; font-weight: 700; color: var(--accent); letter-spacing: .12em; margin-bottom: 14px; }
-  .bc h3 { font-family: 'Space Grotesk'; font-size: 16.5px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .bc h3 { font-family: 'Space Grotesk'; font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
   .bc p { font-size: 13.5px; color: var(--body); line-height: 1.65; }
   .status { display: flex; align-items: center; gap: 7px; margin-top: 18px; }
   .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
@@ -235,7 +319,7 @@
   .dot.y { background: var(--yellow); }
   .st { font-size: 10.5px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .09em; }
 
-  /* ── ROLE CARDS ──────────────────────────── */
+  /* ── ROLE CARDS ──────────────────────────────────────── */
   .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
   @media (max-width: 720px) { .role-grid { grid-template-columns: 1fr; } }
   .role-grid .rc:last-child:nth-child(odd) { grid-column: 1 / -1; }
@@ -251,7 +335,7 @@
   .rc .tag { font-size: 10.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .11em; margin-bottom: 10px; display: block; }
   .rc p { font-size: 14.5px; color: var(--body); line-height: 1.75; }
 
-  /* ── STACK ───────────────────────────────── */
+  /* ── STACK ───────────────────────────────────────────── */
   .stack-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; }
   .stag {
     font-size: 14px; font-weight: 500; color: var(--ink);
@@ -261,9 +345,9 @@
   }
   .stag:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
   .stag span { color: var(--muted); font-weight: 400; }
-  .stag:hover span { color: rgba(255,255,255,.45); }
+  .stag:hover span { color: rgba(255,255,255,.4); }
 
-  /* ── OUTCOMES ────────────────────────────── */
+  /* ── OUTCOMES ────────────────────────────────────────── */
   .out-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   @media (max-width: 720px) { .out-grid { grid-template-columns: 1fr; } }
   .oc {
@@ -278,7 +362,7 @@
   }
   .oc p { font-size: 15px; color: var(--ink); line-height: 1.72; }
 
-  /* ── FOOTER ──────────────────────────────── */
+  /* ── FOOTER ──────────────────────────────────────────── */
   footer { background: var(--ink); padding: 88px 0 104px; }
   .foot-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 52px; }
   footer h3 {
@@ -295,43 +379,66 @@
   .fbtn-w:hover { background: var(--accent); color: #fff; }
   .fbtn-g { color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
   .fbtn-g:hover { border-color: rgba(255,255,255,.5); color: #fff; }
-  .foot-note { font-size: 13.5px; color: rgba(255,255,255,.28); max-width: 380px; line-height: 1.85; margin-top: 6px; }
+  .foot-note { font-size: 13.5px; color: rgba(255,255,255,.28); max-width: 380px; line-height: 1.85; }
 </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ── NAV ── -->
   <header>
     <div class="nav-inner">
       <div class="brandmark">
-        <div class="brand-dot"></div>
-        USSAID ZAFAR
+        <div class="brand-box">UZ</div>
+        <div class="brand-text">
+          <span class="bn">Ussaid Zafar</span>
+          <span class="br">Systems &amp; Automation</span>
+        </div>
       </div>
       <nav class="navlinks">
-        <a href="#work">Work</a>
-        <a href="#role">Approach</a>
-        <a href="#stack">Toolkit</a>
-        <a href="#contact">Contact</a>
+        <a href="#work"><span class="n">01.</span> Work</a>
+        <a href="#role"><span class="n">02.</span> Approach</a>
+        <a href="#stack"><span class="n">03.</span> Toolkit</a>
+        <a href="#contact"><span class="n">04.</span> Contact</a>
       </nav>
+      <div class="avail-badge">
+        <div class="avail-dot"></div>
+        Available for work
+      </div>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- ── HERO ── -->
   <div class="hero-shell">
-    <div class="hero">
-      <div class="wm" aria-hidden="true">UZ</div>
 
+    <!-- giant display name -->
+    <div class="dn-row">
+      <h1 class="display-name">USSAID<br><em>ZAFAR</em></h1>
+      <div class="dn-badge">
+        <span class="db-tag">Based in Pakistan · Remote</span>
+        <span class="db-role">Systems &amp; Automation Engineer</span>
+      </div>
+    </div>
+
+    <!-- thin rule with year -->
+    <div class="dn-divider">
+      <hr>
+      <span class="dn-yr">Est. 2024</span>
+      <hr>
+    </div>
+
+    <!-- two-column content -->
+    <div class="hero-grid">
       <div class="hero-content">
         <div class="eyebrow">
           <div class="ey-line"></div>
           Automation &amp; Systems Engineering
         </div>
 
-        <h1>
+        <p class="hero-tagline">
           I build the systems<br>
           <span class="hl">growing businesses</span><br>
           run on.
-        </h1>
+        </p>
 
         <p class="lede">
           CRM, automation, and executive-reporting infrastructure on GoHighLevel,
@@ -352,10 +459,10 @@
         </div>
       </div>
 
-      <!-- right info panel -->
+      <!-- sticky info panel -->
       <div class="hero-panel">
         <div class="panel-head">
-          <div class="panel-live"></div>
+          <div class="live-dot"></div>
           Current snapshot
         </div>
         <div class="panel-rows">
@@ -368,11 +475,44 @@
         <a class="panel-link" href="mailto:qureshiussaidzafar@gmail.com">qureshiussaidzafar@gmail.com</a>
       </div>
     </div>
-  </div>
 
+    <!-- scrolling skills ticker -->
+    <div class="ticker-wrap">
+      <div class="ticker-track">
+        <!-- set 1 -->
+        <div class="tk-item">GoHighLevel <span class="tk-sep">·</span></div>
+        <div class="tk-item">CRM Architecture <span class="tk-sep">·</span></div>
+        <div class="tk-item">Monday.com <span class="tk-sep">·</span></div>
+        <div class="tk-item">Workflow Automation <span class="tk-sep">·</span></div>
+        <div class="tk-item">Make <span class="tk-sep">·</span></div>
+        <div class="tk-item">Executive Dashboards <span class="tk-sep">·</span></div>
+        <div class="tk-item">Stripe <span class="tk-sep">·</span></div>
+        <div class="tk-item">Funnel Builds <span class="tk-sep">·</span></div>
+        <div class="tk-item">Systems Design <span class="tk-sep">·</span></div>
+        <div class="tk-item">Process Automation <span class="tk-sep">·</span></div>
+        <div class="tk-item">KPI Reporting <span class="tk-sep">·</span></div>
+        <div class="tk-item">Intake Forms <span class="tk-sep">·</span></div>
+        <!-- set 2 — duplicate for seamless loop -->
+        <div class="tk-item">GoHighLevel <span class="tk-sep">·</span></div>
+        <div class="tk-item">CRM Architecture <span class="tk-sep">·</span></div>
+        <div class="tk-item">Monday.com <span class="tk-sep">·</span></div>
+        <div class="tk-item">Workflow Automation <span class="tk-sep">·</span></div>
+        <div class="tk-item">Make <span class="tk-sep">·</span></div>
+        <div class="tk-item">Executive Dashboards <span class="tk-sep">·</span></div>
+        <div class="tk-item">Stripe <span class="tk-sep">·</span></div>
+        <div class="tk-item">Funnel Builds <span class="tk-sep">·</span></div>
+        <div class="tk-item">Systems Design <span class="tk-sep">·</span></div>
+        <div class="tk-item">Process Automation <span class="tk-sep">·</span></div>
+        <div class="tk-item">KPI Reporting <span class="tk-sep">·</span></div>
+        <div class="tk-item">Intake Forms <span class="tk-sep">·</span></div>
+      </div>
+    </div>
+
+  </div><!-- /hero-shell -->
+
+  <!-- ── MAIN CONTENT ── -->
   <div class="wrap">
 
-    <!-- SELECTED WORK INTRO -->
     <section id="work">
       <div class="sl"><span class="sl-tag">Selected Work</span></div>
       <h2>Project 01 — Multi-System<br>Operations Rebuild</h2>
@@ -384,7 +524,6 @@
 
     <hr class="rule">
 
-    <!-- PROBLEM -->
     <section id="challenge">
       <div class="sl">
         <span class="sl-num">01</span>
@@ -411,7 +550,6 @@
 
     <hr class="rule">
 
-    <!-- ARCHITECTURE -->
     <section id="architecture">
       <div class="sl">
         <span class="sl-num">02</span>
@@ -423,7 +561,6 @@
         A from-scratch architecture — one system of record per function, data flowing one direction
         into an executive layer, zero manual re-entry anywhere in the chain.
       </p>
-
       <div class="bento">
         <div class="bc live">
           <div class="bc-id">SYSTEM 01</div>
@@ -466,7 +603,6 @@
 
     <hr class="rule">
 
-    <!-- ROLE -->
     <section id="role">
       <div class="sl">
         <span class="sl-num">03</span>
@@ -478,7 +614,6 @@
         On a project with multiple workstreams and a backend dev team running in parallel, my scope centred
         on the executive layer, the pickup system, and keeping the whole build honest against what was actually signed off.
       </p>
-
       <div class="role-grid">
         <div class="rc">
           <span class="tag">Dashboard Architecture</span>
@@ -505,7 +640,6 @@
 
     <hr class="rule">
 
-    <!-- STACK -->
     <section id="stack">
       <div class="sl">
         <span class="sl-num">04</span>
@@ -523,7 +657,6 @@
 
     <hr class="rule">
 
-    <!-- OUTCOME -->
     <section id="outcome">
       <div class="sl">
         <span class="sl-num">05</span>
@@ -549,7 +682,7 @@
 
   </div>
 
-  <!-- FOOTER -->
+  <!-- ── FOOTER ── -->
   <footer id="contact">
     <div class="wrap foot-row">
       <div>
