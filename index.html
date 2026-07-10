@@ -34,6 +34,46 @@
   }
   ::selection { background: rgba(249,115,22,.13); }
 
+  /* ── PAINT STAINS ────────────────────────────────────── */
+  .blob {
+    position: fixed; pointer-events: none; z-index: 0;
+  }
+  .blob-1 {
+    width: 780px; height: 620px;
+    top: -180px; right: -200px;
+    background: radial-gradient(ellipse at 40% 50%, rgba(249,115,22,.13) 0%, rgba(251,146,60,.07) 45%, transparent 72%);
+    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+    filter: blur(40px);
+    transform: rotate(-18deg);
+  }
+  .blob-2 {
+    width: 640px; height: 720px;
+    bottom: 60px; left: -220px;
+    background: radial-gradient(ellipse at 55% 45%, rgba(249,115,22,.11) 0%, rgba(253,186,116,.06) 50%, transparent 74%);
+    border-radius: 48% 52% 38% 62% / 42% 58% 44% 56%;
+    filter: blur(50px);
+    transform: rotate(12deg);
+  }
+  .blob-3 {
+    width: 420px; height: 380px;
+    top: 38%; left: 32%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(251,146,60,.08) 0%, transparent 68%);
+    border-radius: 71% 29% 58% 42% / 44% 62% 38% 56%;
+    filter: blur(60px);
+    transform: rotate(30deg);
+  }
+  .blob-4 {
+    width: 500px; height: 400px;
+    top: 20%; right: 8%;
+    background: radial-gradient(ellipse at 45% 55%, rgba(253,186,116,.09) 0%, transparent 65%);
+    border-radius: 38% 62% 47% 53% / 60% 40% 60% 40%;
+    filter: blur(55px);
+    transform: rotate(-8deg);
+  }
+
+  /* keep all content above blobs */
+  header, .hero-shell, .wrap, footer { position: relative; z-index: 1; }
+
   /* ── NAV ─────────────────────────────────────────────── */
   header {
     position: sticky; top: 0; z-index: 100;
@@ -383,6 +423,12 @@
 </style>
 </head>
 <body>
+
+  <!-- paint stain blobs -->
+  <div class="blob blob-1" aria-hidden="true"></div>
+  <div class="blob blob-2" aria-hidden="true"></div>
+  <div class="blob blob-3" aria-hidden="true"></div>
+  <div class="blob blob-4" aria-hidden="true"></div>
 
   <!-- ── NAV ── -->
   <header>
