@@ -404,6 +404,47 @@
   }
   .oc p { font-size: 15px; color: var(--ink); line-height: 1.72; }
 
+  /* ── ABOUT ───────────────────────────────────────────── */
+  .about-grid {
+    display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: start; margin-top: 48px;
+  }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .about-photo-slot {
+    width: 100%; aspect-ratio: 1;
+    background: var(--surf); border: 2px dashed var(--border);
+    border-radius: 20px;
+    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px;
+  }
+  .ph-initials { font-family: 'Space Grotesk'; font-size: 52px; font-weight: 700; color: var(--border); letter-spacing: -.04em; }
+  .ph-hint { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+  .about-stats {
+    display: flex; flex-wrap: wrap; gap: 36px;
+    margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--border);
+  }
+  .as-num { font-family: 'Space Grotesk'; font-size: 34px; font-weight: 700; color: var(--accent); display: block; line-height: 1; margin-bottom: 5px; }
+  .as-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); }
+
+  /* ── SERVICES ─────────────────────────────────────────── */
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
+  @media (max-width: 720px) { .svc-grid { grid-template-columns: 1fr; } }
+  .svc-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px;
+    transition: border-color .25s, box-shadow .25s, transform .25s;
+  }
+  .svc-card:hover { border-color: rgba(249,115,22,.35); box-shadow: 0 8px 28px rgba(249,115,22,.07); transform: translateY(-3px); }
+  .svc-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; display: block; }
+  .svc-card h3 { font-family: 'Space Grotesk'; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .svc-card p { font-size: 14.5px; color: var(--body); line-height: 1.72; }
+  .svc-cta {
+    margin-top: 40px; padding: 36px 40px;
+    background: var(--surf); border-radius: 16px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+  }
+  .svc-cta h3 { font-family: 'Space Grotesk'; font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .svc-cta p { font-size: 14.5px; color: var(--body); max-width: 440px; line-height: 1.65; margin: 0; }
+  .svc-cta-text { display: flex; flex-direction: column; gap: 6px; }
+
   /* ── FOOTER ──────────────────────────────────────────── */
   footer { background: var(--ink); padding: 88px 0 104px; }
   .foot-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 52px; }
@@ -518,9 +559,9 @@
         </div>
       </div>
       <nav class="navlinks">
-        <a href="#work"><span class="n">01.</span> Work</a>
-        <a href="#role"><span class="n">02.</span> Approach</a>
-        <a href="#stack"><span class="n">03.</span> Toolkit</a>
+        <a href="#about"><span class="n">01.</span> About</a>
+        <a href="#work"><span class="n">02.</span> Work</a>
+        <a href="#services"><span class="n">03.</span> Services</a>
         <a href="#contact"><span class="n">04.</span> Contact</a>
       </nav>
       <div class="avail-badge">
@@ -545,7 +586,7 @@
     <!-- thin rule with year -->
     <div class="dn-divider">
       <hr>
-      <span class="dn-yr">Est. 2026</span>
+      <span class="dn-yr">Est. 2024</span>
       <hr>
     </div>
 
@@ -575,10 +616,10 @@
         </div>
 
         <div class="meta-strip">
-          <div class="mi"><div class="mk">Focus</div><div class="mv">Systems Architecture</div></div>
-          <div class="mi"><div class="mk">Platforms</div><div class="mv">GHL · Monday · Make</div></div>
-          <div class="mi"><div class="mk">Also builds</div><div class="mv">Forms &amp; Funnels</div></div>
-          <div class="mi"><div class="mk">Status</div><div class="mv">Open to remote work</div></div>
+          <div class="mi"><div class="mk">Systems Built</div><div class="mv">6</div></div>
+          <div class="mi"><div class="mk">Workflows Automated</div><div class="mv">10+</div></div>
+          <div class="mi"><div class="mk">CRM Pipelines</div><div class="mv">3</div></div>
+          <div class="mi"><div class="mk">Platform</div><div class="mv">GoHighLevel · Monday · Make</div></div>
         </div>
       </div>
 
@@ -636,6 +677,53 @@
 
   <!-- ── MAIN CONTENT ── -->
   <div class="wrap">
+
+    <section id="about">
+      <div class="sl"><span class="sl-tag">About</span></div>
+      <div class="about-grid">
+        <!-- Replace this div with <img src="photo.jpg" alt="Ussaid Zafar" style="width:100%;border-radius:20px;"> when you have a photo -->
+        <div class="about-photo-slot">
+          <span class="ph-initials">UZ</span>
+          <span class="ph-hint">Photo coming soon</span>
+        </div>
+        <div class="about-text">
+          <h2>Software engineer<br>turned systems architect.</h2>
+          <p class="lede">
+            I started out building websites and web applications as a software engineer.
+            In 2025, I made the shift to automation and systems architecture — drawn to the idea
+            that well-designed systems multiply a team's output without adding headcount.
+            I now build CRM infrastructure, automated workflows, and executive reporting systems
+            for growing businesses that have outgrown their manual processes.
+          </p>
+          <p class="bt" style="font-size:15px;margin-bottom:0;">
+            My background in software development means I work closely with dev teams and understand
+            technical constraints — I'm not just configuring tools, I'm designing how the pieces
+            fit together end to end. GoHighLevel is my primary platform, but the architecture always
+            comes first.
+          </p>
+          <div class="about-stats">
+            <div>
+              <span class="as-num">6</span>
+              <span class="as-label">Systems Built</span>
+            </div>
+            <div>
+              <span class="as-num">10+</span>
+              <span class="as-label">Workflows Automated</span>
+            </div>
+            <div>
+              <span class="as-num">3</span>
+              <span class="as-label">CRM Pipelines</span>
+            </div>
+            <div>
+              <span class="as-num">2024</span>
+              <span class="as-label">Building since</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
 
     <section id="work">
       <div class="sl"><span class="sl-tag">Selected Work</span></div>
@@ -805,19 +893,51 @@
       </div>
       <h2>What changed.</h2>
       <div class="out-grid">
-        <div class="oc"><span class="oc-num">01</span><p>Leadership can now see fleet performance, collections, and utilization in real time — instead of finding out weeks later.</p></div>
-        <div class="oc"><span class="oc-num">02</span><p>Vehicle handoff runs on a gated, logged workflow with zero manual re-entry, replacing a process that lived in one person's memory.</p></div>
-        <div class="oc"><span class="oc-num">03</span><p>A structural data gap was caught and corrected before go-live, instead of surfacing later as a financial or reporting problem.</p></div>
-        <div class="oc"><span class="oc-num">04</span><p>Investor and partner relationships now run on fully separate pipelines — no more tangled data with renter operations.</p></div>
+        <div class="oc"><span class="oc-num">10 KPIs</span><p>Leadership now tracks fleet performance, collections, and utilization in a live 10-metric dashboard — instead of finding out about problems weeks after they happen.</p></div>
+        <div class="oc"><span class="oc-num">0 manual steps</span><p>Vehicle handoff runs on a fully gated, event-logged workflow with zero manual data entry — replacing a process that lived in one person's memory.</p></div>
+        <div class="oc"><span class="oc-num">Pre-launch</span><p>A structural gap between renter and vehicle records was caught during architecture review and fixed before go-live — not after it became a financial reporting error.</p></div>
+        <div class="oc"><span class="oc-num">3 pipelines</span><p>Investors, partners, and renters now each run on their own fully isolated CRM pipeline — replacing one tangled system where everything was mixed together.</p></div>
       </div>
     </section>
 
     <hr class="rule">
 
-    <section>
-      <div class="sl"><span class="sl-tag">More Work</span></div>
-      <h2>Additional projects<br>coming soon.</h2>
-      <p class="bt">This portfolio is actively growing — reach out directly for a fuller walkthrough of past work, including proposal writing, funnel builds, and mobile/web development.</p>
+    <section id="services">
+      <div class="sl"><span class="sl-tag">Services</span></div>
+      <h2>What I build.</h2>
+      <p class="bt">
+        Every engagement starts with understanding the actual problem — not just the tool request.
+        Here are the core disciplines. If your bottleneck maps to any of these, I can build the system that solves it.
+      </p>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <span class="svc-num">01 — CRM Architecture</span>
+          <h3>GoHighLevel Setup &amp; Pipeline Design</h3>
+          <p>Full CRM architecture on GoHighLevel — contact record structure, pipeline stages, automated tagging, role-based team routing, and the workflow logic that connects it all.</p>
+        </div>
+        <div class="svc-card">
+          <span class="svc-num">02 — Workflow Automation</span>
+          <h3>Trigger-Based Automation Builds</h3>
+          <p>Design and build automations that remove manual steps from your operation — payment follow-ups, handoff sequences, lead nurture flows, and escalation logic on GHL and Make.</p>
+        </div>
+        <div class="svc-card">
+          <span class="svc-num">03 — Executive Reporting</span>
+          <h3>KPI Dashboards on Monday.com</h3>
+          <p>Automated KPI frameworks with Red/Yellow/Green escalation, leadership-facing views, and live data flowing in from your CRM and payments stack — so you see problems before they cost money.</p>
+        </div>
+        <div class="svc-card">
+          <span class="svc-num">04 — Funnels &amp; Intake</span>
+          <h3>Lead Funnels &amp; Smart Forms</h3>
+          <p>Multi-step intake funnels and forms with conditional logic, field-level validation, and automated routing that fires the right sequence on submission — no manual sorting required.</p>
+        </div>
+      </div>
+      <div class="svc-cta">
+        <div class="svc-cta-text">
+          <h3>Have a process that needs replacing?</h3>
+          <p>Most engagements start with a short discovery call to map the problem, scope the build, and confirm the fit.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:qureshiussaidzafar@gmail.com">Start the conversation</a>
+      </div>
     </section>
 
   </div>
