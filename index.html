@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ussaid Zafar — Systems &amp; Automation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root{
+    --bg: #0a0e16;
+    --bg-alt: #0f1420;
+    --card: #141a28;
+    --card-border: #232b3d;
+    --ink: #f6f8fb;
+    --body: #c7cedb;
+    --muted: #8892a3;
+    --gold: #d9b25f;
+    --gold-soft: rgba(217, 178, 95, 0.12);
+    --green: #4ade80;
+    --yellow: #eab84d;
+    --red: #f87171;
+  }
+
+  * { box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--body);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  ::selection{ background: var(--gold-soft); color: var(--ink); }
+
+  .wrap{ max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- header ---------- */
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(10, 14, 22, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--card-border);
+  }
+  .nav-inner{
+    max-width: 1040px; margin:0 auto; padding: 20px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brandmark{ font-family:'Space Grotesk'; font-weight:700; font-size:16px; color: var(--ink); letter-spacing: -0.01em; }
+  .brandmark .role{ color: var(--gold); font-weight:500; font-size:13px; margin-left:10px; }
+  .navlinks{ display:flex; gap:32px; }
+  .navlinks a{ color: var(--body); text-decoration:none; font-size:14.5px; font-weight:500; }
+  .navlinks a:hover{ color: var(--gold); }
+  @media (max-width:640px){ .navlinks{ display:none; } }
+
+  /* ---------- hero ---------- */
+  .hero{ padding: 100px 0 76px 0; }
+  .eyebrow{
+    display:inline-block; font-size:13.5px; font-weight:600;
+    color: var(--gold); text-transform:uppercase; letter-spacing:.08em;
+    margin-bottom: 22px; padding: 6px 14px; border:1px solid rgba(217,178,95,.35);
+    border-radius: 100px; background: var(--gold-soft);
+  }
+  h1{
+    font-family:'Space Grotesk'; font-weight:700;
+    font-size: clamp(36px, 5.2vw, 58px);
+    line-height:1.1; letter-spacing:-0.02em; color: var(--ink);
+    margin: 0 0 26px 0; max-width: 780px;
+  }
+  h1 .accent{ color: var(--gold); }
+  .lede{ font-size:18.5px; color: var(--body); max-width: 640px; margin: 0 0 36px 0; }
+
+  .contact-pills{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom: 48px; }
+  .pill-btn{
+    font-size:14.5px; font-weight:600; color: var(--bg);
+    background: var(--gold);
+    padding: 13px 22px; border-radius: 6px; text-decoration:none;
+  }
+  .pill-btn:hover{ background: #e7c576; }
+  .pill-btn.ghost{
+    color: var(--ink); background: transparent; border: 1px solid var(--card-border);
+  }
+  .pill-btn.ghost:hover{ border-color: var(--gold); color: var(--gold); }
+
+  .hero-meta{
+    display:grid; grid-template-columns: repeat(4, auto);
+    gap: 40px; padding-top: 36px; border-top: 1px solid var(--card-border);
+  }
+  @media (max-width:720px){ .hero-meta{ grid-template-columns: repeat(2, auto); } }
+  .hero-meta .k{ color: var(--muted); text-transform:uppercase; letter-spacing:.06em; font-size:12px; margin-bottom:7px; font-weight:600; }
+  .hero-meta .v{ color: var(--ink); font-size:15px; font-weight:500; }
+
+  /* ---------- section shell ---------- */
+  section{ padding: 68px 0; }
+  section.divider{ border-top: 1px solid var(--card-border); }
+  .eyebrow-sm{
+    font-size:13px; font-weight:700; color: var(--gold);
+    text-transform:uppercase; letter-spacing:.1em; margin-bottom: 14px;
+  }
+  h2{
+    font-family:'Space Grotesk'; font-weight:700; font-size: 32px;
+    margin: 0 0 20px 0; letter-spacing:-0.01em; color: var(--ink);
+  }
+  p.body-text{ color: var(--body); font-size:16.5px; max-width: 700px; }
+
+  /* ---------- fault list ---------- */
+  .fault-list{ list-style:none; margin: 30px 0 0 0; padding:0; display:grid; gap:14px; max-width: 720px; }
+  .fault-list li{
+    display:flex; gap:16px; align-items:flex-start;
+    font-size:15.5px; color: var(--body); padding: 18px 20px;
+    background: var(--card); border: 1px solid var(--card-border); border-radius: 10px;
+  }
+  .fault-list .mark{ color: var(--red); font-weight:700; flex-shrink:0; font-size:16px; }
+
+  /* ---------- systems grid ---------- */
+  .sys-grid{ margin-top: 36px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width:820px){ .sys-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width:560px){ .sys-grid{ grid-template-columns: 1fr; } }
+  .sys-node{
+    background: var(--card); border: 1px solid var(--card-border);
+    padding: 24px 22px; border-radius: 12px;
+  }
+  .sys-node .id{ font-size:12.5px; font-weight:700; color: var(--gold); letter-spacing:.06em; }
+  .sys-node h3{ font-family:'Space Grotesk'; font-size:17px; font-weight:600; margin: 10px 0 10px 0; color: var(--ink); }
+  .sys-node p{ font-size:14.3px; color: var(--body); margin:0; line-height:1.6; }
+  .status-row{ margin-top:16px; display:flex; align-items:center; gap:8px; }
+  .dot{ width:8px; height:8px; border-radius:50%; }
+  .dot.g{ background: var(--green); }
+  .dot.y{ background: var(--yellow); }
+  .status-row span{ font-size:11.5px; color: var(--muted); text-transform:uppercase; letter-spacing:.05em; font-weight:600; }
+
+  /* ---------- role cards ---------- */
+  .role-grid{ margin-top: 30px; display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width:720px){ .role-grid{ grid-template-columns: 1fr; } }
+  .role-grid .role-card:last-child:nth-child(odd){ grid-column: 1 / -1; }
+  .role-card{ background: var(--card); border: 1px solid var(--card-border); padding: 24px; border-radius: 12px; }
+  .role-card .tag{ font-size:12.5px; font-weight:700; color: var(--gold); letter-spacing:.06em; text-transform:uppercase; margin-bottom:12px; display:block; }
+  .role-card p{ font-size:15px; color: var(--body); margin:0; }
+  .role-card.flag{ border-color: rgba(234, 184, 77, 0.5); background: linear-gradient(180deg, rgba(234,184,77,0.06), transparent 40%), var(--card); }
+
+  /* ---------- stack ---------- */
+  .stack-row{ margin-top: 30px; display:flex; flex-wrap:wrap; gap:12px; }
+  .stack-pill{
+    font-size:14px; font-weight:600; color: var(--ink);
+    border: 1px solid var(--card-border); background: var(--card);
+    padding: 12px 18px; border-radius: 8px;
+  }
+  .stack-pill .dim{ color: var(--muted); font-weight:400; }
+
+  /* ---------- outcomes ---------- */
+  .outcome-grid{ margin-top: 30px; display:grid; grid-template-columns: repeat(2, 1fr); gap:18px; }
+  @media (max-width:720px){ .outcome-grid{ grid-template-columns: 1fr; } }
+  .outcome-card{ padding: 22px; border-radius: 12px; background: var(--card); border: 1px solid var(--card-border); }
+  .outcome-card .num{ color: var(--gold); font-size:18px; font-weight:700; margin-bottom:12px; display:block; }
+  .outcome-card p{ font-size:15.5px; color: var(--ink); margin:0; line-height:1.6; }
+
+  /* ---------- footer ---------- */
+  footer{ padding: 64px 0 80px 0; border-top: 1px solid var(--card-border); background: var(--bg-alt); }
+  .foot-row{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:32px; }
+  .foot-note{ font-size:13.5px; color: var(--muted); max-width:420px; line-height:1.7; }
+  .foot-cta h3{ font-family:'Space Grotesk'; font-size:24px; color: var(--ink); margin: 0 0 18px 0; font-weight:700; }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-inner">
+      <div class="brandmark">USSAID ZAFAR<span class="role">Systems &amp; Automation</span></div>
+      <div class="navlinks">
+        <a href="#work">Work</a>
+        <a href="#role">Approach</a>
+        <a href="#stack">Toolkit</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+
+    <section class="hero">
+      <div class="eyebrow">Automation &amp; Systems Engineering</div>
+      <h1>I build the operating systems<br><span class="accent">growing businesses</span> outgrow spreadsheets on.</h1>
+      <p class="lede">
+        I design and build CRM, automation, and executive-reporting systems on GoHighLevel, Monday.com, and Make —
+        turning manual, memory-dependent operations into workflows that run themselves and report on themselves.
+      </p>
+
+      <div class="contact-pills">
+        <a class="pill-btn" href="mailto:qureshiussaidzafar@gmail.com">qureshiussaidzafar@gmail.com</a>
+        <a class="pill-btn ghost" href="https://linkedin.com/in/ussaidzafar" target="_blank">LinkedIn ↗</a>
+      </div>
+
+      <div class="hero-meta">
+        <div><div class="k">Focus</div><div class="v">Systems Architecture</div></div>
+        <div><div class="k">Platforms</div><div class="v">GHL &middot; Monday &middot; Make</div></div>
+        <div><div class="k">Also Build</div><div class="v">Forms &amp; Funnels</div></div>
+        <div><div class="k">Availability</div><div class="v">Open for remote work</div></div>
+      </div>
+    </section>
+
+    <section id="work" class="divider">
+      <div class="eyebrow-sm">Selected Work</div>
+      <h2>Project 01 — Multi-System Operations Rebuild</h2>
+      <p class="body-text">
+        A multi-location vehicle rental operator was scaling its fleet, its investor base, and its partner
+        network all at once — with no single source of truth. Here's the system I architected and built to replace it.
+      </p>
+    </section>
+
+    <section class="divider" id="challenge">
+      <div class="eyebrow-sm">01 &middot; The Problem</div>
+      <h2>Growth had outrun the operation's memory.</h2>
+      <p class="body-text">
+        Every part of the business lived in someone's head, a spreadsheet, or a group chat.
+        There was no single source of truth, and no way for leadership to see the business without asking someone to go find out.
+      </p>
+      <ul class="fault-list">
+        <li><span class="mark">✕</span> No real-time visibility into fleet profitability, utilization, or collections — leadership found out about problems after they'd already cost money.</li>
+        <li><span class="mark">✕</span> Vehicle pickup and handoff relied entirely on a person remembering every step, with no record if something was missed.</li>
+        <li><span class="mark">✕</span> Investor, partner, and renter relationships were tangled together in the same pipeline, with no separation of data or process.</li>
+        <li><span class="mark">✕</span> Nothing was logged. If a payment failed, a pickup stalled, or a follow-up was missed, there was no trace of why.</li>
+      </ul>
+    </section>
+
+    <section class="divider" id="architecture">
+      <div class="eyebrow-sm">02 &middot; The Architecture</div>
+      <h2>Six systems, one source of truth.</h2>
+      <p class="body-text">
+        Rather than patch the existing chaos, the brief called for a from-scratch architecture — one system
+        of record per function, aggregated data flowing one direction into an executive layer, and zero manual
+        re-entry anywhere in the chain.
+      </p>
+
+      <div class="sys-grid">
+        <div class="sys-node">
+          <div class="id">SYSTEM 01</div>
+          <h3>Executive Dashboard</h3>
+          <p>Ten-metric KPI framework with automated Red/Yellow/Green escalation, built on Monday.com.</p>
+          <div class="status-row"><span class="dot g"></span><span>Live</span></div>
+        </div>
+        <div class="sys-node">
+          <div class="id">SYSTEM 02</div>
+          <h3>Automated Pickup System</h3>
+          <p>Gated in-person &amp; no-contact handoff flows with auto-generated records and full event logging.</p>
+          <div class="status-row"><span class="dot g"></span><span>Live</span></div>
+        </div>
+        <div class="sys-node">
+          <div class="id">SYSTEM 03</div>
+          <h3>Core CRM &amp; Payments</h3>
+          <p>Unified customer service, billing, and a dynamic renter risk-scoring engine driving collections logic.</p>
+          <div class="status-row"><span class="dot y"></span><span>In build</span></div>
+        </div>
+        <div class="sys-node">
+          <div class="id">SYSTEM 04</div>
+          <h3>Investor Relations CRM</h3>
+          <p>Fully isolated capital pipeline with contract automation and a restricted investor-facing portal.</p>
+          <div class="status-row"><span class="dot y"></span><span>In build</span></div>
+        </div>
+        <div class="sys-node">
+          <div class="id">SYSTEM 05</div>
+          <h3>Strategic Partnerships CRM</h3>
+          <p>Separate pipeline for referral and growth partners, isolated from renter and investor data entirely.</p>
+          <div class="status-row"><span class="dot y"></span><span>In build</span></div>
+        </div>
+        <div class="sys-node">
+          <div class="id">SYSTEM 06</div>
+          <h3>Dedicated Lead Funnel</h3>
+          <p>Isolated intake funnel, phone line, and nurture sequence for a new community offering — zero crossover with core ops.</p>
+          <div class="status-row"><span class="dot y"></span><span>Scoped</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="divider" id="role">
+      <div class="eyebrow-sm">03 &middot; What I Did</div>
+      <h2>My specific contribution to the build.</h2>
+      <p class="body-text">
+        On a project with multiple workstreams and a backend dev team running in parallel, my scope centered
+        on the executive layer, the pickup system, and keeping the whole build honest against what was actually signed off.
+      </p>
+
+      <div class="role-grid">
+        <div class="role-card">
+          <span class="tag">Dashboard Architecture</span>
+          <p>Designed and built the ten-KPI executive dashboard from scratch — status logic, automation rules, and the CEO-facing view — so leadership could assess the entire operation in under two minutes.</p>
+        </div>
+        <div class="role-card">
+          <span class="tag">Workflow Engineering</span>
+          <p>Engineered the automated pickup workflows in GHL — vehicle auto-fill logic, gated entry conditions, and full event logging — removing manual data entry from the handoff process entirely.</p>
+        </div>
+        <div class="role-card">
+          <span class="tag">Forms &amp; Funnel Builds</span>
+          <p>Designed and built the intake forms and multi-step funnels behind the lead-gen system — from field-level validation to the automated tagging and routing that fires on submission.</p>
+        </div>
+        <div class="role-card flag">
+          <span class="tag">Risk Catch</span>
+          <p>Ran a deep architectural review that surfaced a missing link between renter records and vehicle records — a gap that would have caused silent reporting errors downstream. Flagged it and scoped the fix before it shipped.</p>
+        </div>
+        <div class="role-card">
+          <span class="tag">Scope Discipline</span>
+          <p>Managed delivery against a signed technical scope through a fast-moving client relationship — triaging new requests into future phases instead of letting scope creep erode the build.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="divider" id="stack">
+      <div class="eyebrow-sm">04 &middot; Toolkit</div>
+      <h2>Tools in play.</h2>
+      <div class="stack-row">
+        <div class="stack-pill">GoHighLevel <span class="dim">// CRM + automation</span></div>
+        <div class="stack-pill">Monday.com <span class="dim">// exec reporting</span></div>
+        <div class="stack-pill">Make <span class="dim">// integration layer</span></div>
+        <div class="stack-pill">Stripe <span class="dim">// payments</span></div>
+      </div>
+    </section>
+
+    <section class="divider" id="outcome">
+      <div class="eyebrow-sm">05 &middot; Outcome</div>
+      <h2>What changed.</h2>
+      <div class="outcome-grid">
+        <div class="outcome-card"><span class="num">→</span><p>Leadership can now see fleet performance, collections, and utilization in real time — instead of finding out weeks later.</p></div>
+        <div class="outcome-card"><span class="num">→</span><p>Vehicle handoff runs on a gated, logged workflow with zero manual re-entry, in place of a process that lived in one person's memory.</p></div>
+        <div class="outcome-card"><span class="num">→</span><p>A structural data gap was caught and corrected before go-live, instead of surfacing later as a financial or reporting problem.</p></div>
+        <div class="outcome-card"><span class="num">→</span><p>Investor and partner relationships now run on pipelines fully separate from renter operations — no more tangled data.</p></div>
+      </div>
+    </section>
+
+    <section class="divider">
+      <div class="eyebrow-sm">More Work</div>
+      <h2>Additional projects coming soon.</h2>
+      <p class="body-text">This portfolio is actively growing — reach out directly for a fuller walkthrough of past work, including proposal writing, funnel builds, and mobile/web development.</p>
+    </section>
+
+  </div>
+
+  <footer id="contact">
+    <div class="wrap foot-row">
+      <div class="foot-cta">
+        <h3>Have a similar system to untangle?</h3>
+        <div class="contact-pills">
+          <a class="pill-btn" href="mailto:qureshiussaidzafar@gmail.com">qureshiussaidzafar@gmail.com</a>
+          <a class="pill-btn ghost" href="https://linkedin.com/in/ussaidzafar" target="_blank">LinkedIn ↗</a>
+        </div>
+      </div>
+      <div class="foot-note">
+        Client details, figures, and identifying information in this case study have been generalized
+        to respect a confidentiality agreement. Architecture, scope, and role descriptions reflect the actual build.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
