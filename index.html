@@ -23,7 +23,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; overflow-x: hidden; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--white);
     color: var(--body);
@@ -32,6 +32,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     position: relative;
+    overflow-x: clip;
   }
   ::selection { background: rgba(249,115,22,.13); }
 
