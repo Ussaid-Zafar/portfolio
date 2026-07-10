@@ -34,44 +34,23 @@
   }
   ::selection { background: rgba(249,115,22,.13); }
 
-  /* ── PAINT STAINS ────────────────────────────────────── */
-  .blob {
+  /* ── PAINT SPLATTERS ─────────────────────────────────── */
+  .splat {
     position: fixed; pointer-events: none; z-index: 0;
   }
-  .blob-1 {
-    width: 780px; height: 620px;
-    top: -180px; right: -200px;
-    background: radial-gradient(ellipse at 40% 50%, rgba(249,115,22,.13) 0%, rgba(251,146,60,.07) 45%, transparent 72%);
-    border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
-    filter: blur(40px);
-    transform: rotate(-18deg);
+  .splat-1 {
+    width: 700px;
+    top: -50px; right: -90px;
+    opacity: .13;
   }
-  .blob-2 {
-    width: 640px; height: 720px;
-    bottom: 60px; left: -220px;
-    background: radial-gradient(ellipse at 55% 45%, rgba(249,115,22,.11) 0%, rgba(253,186,116,.06) 50%, transparent 74%);
-    border-radius: 48% 52% 38% 62% / 42% 58% 44% 56%;
-    filter: blur(50px);
-    transform: rotate(12deg);
-  }
-  .blob-3 {
-    width: 420px; height: 380px;
-    top: 38%; left: 32%;
-    background: radial-gradient(ellipse at 50% 50%, rgba(251,146,60,.08) 0%, transparent 68%);
-    border-radius: 71% 29% 58% 42% / 44% 62% 38% 56%;
-    filter: blur(60px);
-    transform: rotate(30deg);
-  }
-  .blob-4 {
-    width: 500px; height: 400px;
-    top: 20%; right: 8%;
-    background: radial-gradient(ellipse at 45% 55%, rgba(253,186,116,.09) 0%, transparent 65%);
-    border-radius: 38% 62% 47% 53% / 60% 40% 60% 40%;
-    filter: blur(55px);
-    transform: rotate(-8deg);
+  .splat-2 {
+    width: 500px;
+    bottom: -30px; left: -70px;
+    opacity: .10;
+    transform: rotate(-20deg) scaleX(-1);
   }
 
-  /* keep all content above blobs */
+  /* keep all content above splatters */
   header, .hero-shell, .wrap, footer { position: relative; z-index: 1; }
 
   /* ── NAV ─────────────────────────────────────────────── */
@@ -424,11 +403,78 @@
 </head>
 <body>
 
-  <!-- paint stain blobs -->
-  <div class="blob blob-1" aria-hidden="true"></div>
-  <div class="blob blob-2" aria-hidden="true"></div>
-  <div class="blob blob-3" aria-hidden="true"></div>
-  <div class="blob blob-4" aria-hidden="true"></div>
+  <!-- paint splatter 1: top-right -->
+  <svg class="splat splat-1" viewBox="0 0 800 620" fill="#f97316" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- central blob -->
+    <path d="M400 240 C424 212 466 202 494 218 C522 234 532 266 524 298 C516 330 492 350 462 348 C432 346 406 328 396 300 C386 272 390 254 400 240Z"/>
+    <!-- right arm — main splatter direction -->
+    <path d="M524 278 C564 268 608 256 652 248 C685 242 718 238 748 234 C720 240 688 244 655 252 C610 262 566 276 528 292Z"/>
+    <!-- far-right thinner arm -->
+    <path d="M652 248 C690 240 728 234 764 228 C784 224 800 222 800 222 C780 226 764 228 744 232 C708 238 670 248 654 256Z"/>
+    <!-- upper-right arm -->
+    <path d="M494 218 C520 194 554 170 590 152 C618 138 650 128 678 122 C650 132 620 144 592 160 C556 178 522 202 496 228Z"/>
+    <!-- downward drip arm -->
+    <path d="M462 348 C460 382 458 420 458 454 C458 480 460 502 462 522 C464 502 464 480 466 454 C466 420 468 382 466 350Z"/>
+    <!-- left arm (smaller) -->
+    <path d="M396 282 C358 274 314 264 274 258 C244 254 218 252 196 254 C220 252 246 256 276 262 C316 268 360 280 398 294Z"/>
+    <!-- right large drops -->
+    <circle cx="758" cy="232" r="18"/>
+    <circle cx="792" cy="226" r="10"/>
+    <circle cx="718" cy="238" r="7"/>
+    <circle cx="692" cy="246" r="5"/>
+    <!-- upper-right drops -->
+    <circle cx="690" cy="120" r="20"/>
+    <circle cx="722" cy="110" r="12"/>
+    <circle cx="746" cy="104" r="6"/>
+    <circle cx="708" cy="98" r="4"/>
+    <!-- bottom drip drops -->
+    <circle cx="462" cy="534" r="14"/>
+    <circle cx="460" cy="554" r="8"/>
+    <circle cx="464" cy="572" r="5"/>
+    <!-- left arm drops -->
+    <circle cx="180" cy="254" r="12"/>
+    <circle cx="160" cy="252" r="7"/>
+    <circle cx="144" cy="258" r="4"/>
+    <!-- scattered micro drops -->
+    <circle cx="634" cy="256" r="5"/>
+    <circle cx="608" cy="248" r="4"/>
+    <circle cx="576" cy="244" r="3"/>
+    <circle cx="556" cy="266" r="3"/>
+    <circle cx="538" cy="252" r="3"/>
+    <circle cx="520" cy="244" r="2"/>
+    <circle cx="552" cy="158" r="5"/>
+    <circle cx="532" cy="146" r="3"/>
+  </svg>
+
+  <!-- paint splatter 2: bottom-left (mirrored, smaller) -->
+  <svg class="splat splat-2" viewBox="0 0 620 520" fill="#f97316" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- central blob -->
+    <path d="M290 230 C310 206 346 196 370 210 C394 224 402 252 394 278 C386 304 364 318 340 316 C316 314 294 298 286 274 C278 250 282 238 290 230Z"/>
+    <!-- main arm -->
+    <path d="M394 258 C428 250 468 240 506 234 C534 228 558 224 578 222 C556 226 532 232 506 238 C466 246 426 258 396 270Z"/>
+    <!-- upper arm -->
+    <path d="M344 202 C342 174 342 140 344 112 C346 90 350 70 354 56 C352 74 348 94 348 116 C348 144 348 178 350 206Z"/>
+    <!-- lower-left drip -->
+    <path d="M286 272 C258 280 224 290 190 296 C166 300 144 302 126 302 C146 298 168 294 192 290 C226 282 260 270 288 260Z"/>
+    <!-- right drops -->
+    <circle cx="590" cy="220" r="14"/>
+    <circle cx="610" cy="216" r="8"/>
+    <circle cx="568" cy="226" r="5"/>
+    <!-- top drops -->
+    <circle cx="354" cy="44" r="13"/>
+    <circle cx="356" cy="26" r="7"/>
+    <circle cx="350" cy="12" r="4"/>
+    <!-- left drops -->
+    <circle cx="110" cy="302" r="11"/>
+    <circle cx="92" cy="304" r="6"/>
+    <circle cx="78" cy="308" r="4"/>
+    <!-- scattered -->
+    <circle cx="470" cy="238" r="5"/>
+    <circle cx="440" cy="244" r="4"/>
+    <circle cx="416" cy="238" r="3"/>
+    <circle cx="374" cy="194" r="4"/>
+    <circle cx="320" cy="200" r="3"/>
+  </svg>
 
   <!-- ── NAV ── -->
   <header>
@@ -481,9 +527,9 @@
         </div>
 
         <p class="hero-tagline">
-          I build the systems<br>
-          <span class="hl">growing businesses</span><br>
-          run on.
+          If your team is doing it manually —<br>
+          I build the <span class="hl">system that</span><br>
+          replaces it.
         </p>
 
         <p class="lede">
