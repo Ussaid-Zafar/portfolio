@@ -409,14 +409,7 @@
     display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: start; margin-top: 48px;
   }
   @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
-  .about-photo-slot {
-    width: 100%; aspect-ratio: 1;
-    background: var(--surf); border: 2px dashed var(--border);
-    border-radius: 20px;
-    display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px;
-  }
-  .ph-initials { font-family: 'Space Grotesk'; font-size: 52px; font-weight: 700; color: var(--border); letter-spacing: -.04em; }
-  .ph-hint { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+  .about-grid img { border-radius: 20px; }
   .about-stats {
     display: flex; flex-wrap: wrap; gap: 36px;
     margin-top: 36px; padding-top: 32px; border-top: 1px solid var(--border);
@@ -681,11 +674,7 @@
     <section id="about">
       <div class="sl"><span class="sl-tag">About</span></div>
       <div class="about-grid">
-        <!-- Replace this div with <img src="photo.jpg" alt="Ussaid Zafar" style="width:100%;border-radius:20px;"> when you have a photo -->
-        <div class="about-photo-slot">
-          <span class="ph-initials">UZ</span>
-          <span class="ph-hint">Photo coming soon</span>
-        </div>
+        <img src="photo.jpg" alt="Ussaid Zafar" style="width:100%;border-radius:20px;object-fit:cover;display:block;">
         <div class="about-text">
           <h2>Software engineer<br>turned systems architect.</h2>
           <p class="lede">
