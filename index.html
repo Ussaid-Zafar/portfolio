@@ -3,474 +3,566 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ussaid Zafar — Systems &amp; Automation</title>
+<title>Ussaid Zafar — Systems & Automation</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
-  :root{
-    --bg: #07091200;
-    --bg-solid: #070912;
-    --bg-alt: #0b0e1a;
-    --card: rgba(255,255,255,0.04);
-    --card-border: rgba(255,255,255,0.08);
-    --ink: #e8eeff;
-    --body: #8b9cc0;
-    --muted: #4e5c78;
-    --indigo: #818cf8;
-    --cyan: #22d3ee;
-    --purple: #a78bfa;
-    --grad: linear-gradient(135deg, #818cf8, #22d3ee);
-    --grad-rev: linear-gradient(135deg, #22d3ee, #a78bfa);
-    --green: #34d399;
-    --yellow: #fbbf24;
-    --red: #f87171;
+  :root {
+    --white:  #ffffff;
+    --off:    #fafaf9;
+    --surf:   #f4f4f1;
+    --border: #e8e8e4;
+    --ink:    #111111;
+    --body:   #525252;
+    --muted:  #a1a1aa;
+    --accent: #f97316;
+    --a-soft: #fff7ed;
+    --green:  #22c55e;
+    --yellow: #f59e0b;
+    --red:    #ef4444;
   }
 
-  * { box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-
   body {
-    margin: 0;
-    background: var(--bg-solid);
+    background: var(--white);
     color: var(--body);
     font-family: 'Inter', sans-serif;
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
+  ::selection { background: rgba(249,115,22,.13); }
 
-  /* dot grid overlay */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: radial-gradient(rgba(129,140,248,0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  header, .wrap, footer { position: relative; z-index: 1; }
-
-  ::selection { background: rgba(129,140,248,0.25); color: var(--ink); }
-
-  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 48px; }
-
-  /* ── nav ── */
+  /* ── NAV ─────────────────────────────────── */
   header {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(7,9,18,0.82);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
   }
-  /* rainbow accent stripe */
+  /* animated orange stripe */
   header::before {
     content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, #818cf8, #22d3ee, #a78bfa, #818cf8);
-    background-size: 200% 100%;
-    animation: stripe 4s linear infinite;
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), #fb923c, #fde68a, #fb923c, var(--accent));
+    background-size: 300% 100%;
+    animation: shimmer 4s linear infinite;
   }
-  @keyframes stripe { to { background-position: -200% 0; } }
+  @keyframes shimmer { to { background-position: -300% center; } }
 
   .nav-inner {
-    max-width: 1320px; margin: 0 auto; padding: 20px 48px;
+    max-width: 1400px; margin: 0 auto; padding: 0 60px;
     display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
   }
-  .brandmark { font-family: 'Space Grotesk'; font-weight: 700; font-size: 16px; color: var(--ink); letter-spacing: -0.01em; }
-  .brandmark .role {
-    background: var(--grad);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    font-weight: 500; font-size: 13px; margin-left: 10px;
+  .brandmark {
+    font-family: 'Space Grotesk'; font-weight: 700; font-size: 15px;
+    color: var(--ink); letter-spacing: -.01em;
+    display: flex; align-items: center; gap: 8px;
   }
-  .navlinks { display: flex; gap: 32px; }
-  .navlinks a { color: var(--body); text-decoration: none; font-size: 14.5px; font-weight: 500; transition: color .2s; }
-  .navlinks a:hover { color: var(--indigo); }
-  @media (max-width:640px) { .navlinks { display: none; } }
+  .brand-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .navlinks { display: flex; gap: 36px; }
+  .navlinks a {
+    color: var(--muted); text-decoration: none;
+    font-size: 14px; font-weight: 500; transition: color .2s;
+  }
+  .navlinks a:hover { color: var(--ink); }
+  @media (max-width: 640px) { .navlinks { display: none; } }
 
-  /* ── hero ── */
+  /* ── LAYOUT ──────────────────────────────── */
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+  @media (max-width: 768px) { .wrap { padding: 0 24px; } .nav-inner { padding: 0 24px; } }
+
+  /* ── HERO ────────────────────────────────── */
+  .hero-shell { border-bottom: 1px solid var(--border); }
   .hero {
-    padding: 110px 0 90px;
-    position: relative; overflow: hidden;
+    max-width: 1400px; margin: 0 auto; padding: 100px 60px;
+    display: grid;
+    grid-template-columns: 1fr 390px;
+    gap: 80px; align-items: center;
+    position: relative;
+    min-height: calc(100vh - 64px);
   }
-  /* floating gradient orbs */
-  .hero-orbs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-  .orb {
-    position: absolute; border-radius: 50%;
-    filter: blur(90px); opacity: 0.45;
+  @media (max-width: 1020px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; padding: 72px 60px; }
+    .hero-panel { display: none; }
   }
-  .orb-1 {
-    width: 650px; height: 650px;
-    background: radial-gradient(circle, rgba(99,102,241,0.5), transparent 70%);
-    top: -220px; right: -60px;
-    animation: drift 10s ease-in-out infinite;
+  @media (max-width: 768px) { .hero { padding: 60px 24px; } }
+
+  /* big watermark behind hero */
+  .wm {
+    position: absolute; bottom: 0; left: 60px;
+    font-family: 'Space Grotesk'; font-weight: 700;
+    font-size: clamp(100px, 18vw, 220px);
+    line-height: 1; letter-spacing: -.06em;
+    color: rgba(0,0,0,.025);
+    pointer-events: none; user-select: none;
+    white-space: nowrap;
   }
-  .orb-2 {
-    width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(34,211,238,0.35), transparent 70%);
-    bottom: -130px; left: 60px;
-    animation: drift 13s ease-in-out infinite reverse;
-  }
-  .orb-3 {
-    width: 320px; height: 320px;
-    background: radial-gradient(circle, rgba(167,139,250,0.3), transparent 70%);
-    top: 45%; left: 42%;
-    animation: drift 16s ease-in-out infinite 2s;
-  }
-  @keyframes drift {
-    0%,100% { transform: translateY(0) scale(1); }
-    50%      { transform: translateY(-28px) scale(1.05); }
-  }
-  .hero > *:not(.hero-orbs) { position: relative; z-index: 1; }
+
+  .hero-content { position: relative; z-index: 1; }
 
   .eyebrow {
-    display: inline-block;
-    font-size: 12px; font-weight: 700;
-    color: var(--indigo);
-    text-transform: uppercase; letter-spacing: .12em;
-    margin-bottom: 26px; padding: 7px 18px;
-    border: 1px solid rgba(129,140,248,0.3);
-    border-radius: 100px;
-    background: rgba(129,140,248,0.08);
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; font-weight: 600; color: var(--accent);
+    text-transform: uppercase; letter-spacing: .14em;
+    margin-bottom: 30px;
   }
+  .ey-line { width: 28px; height: 2px; background: var(--accent); flex-shrink: 0; }
 
   h1 {
     font-family: 'Space Grotesk'; font-weight: 700;
-    font-size: clamp(38px, 5.5vw, 64px);
-    line-height: 1.08; letter-spacing: -0.02em; color: var(--ink);
-    margin: 0 0 28px; max-width: 900px;
+    font-size: clamp(44px, 5.8vw, 72px);
+    line-height: 1.05; letter-spacing: -.03em; color: var(--ink);
+    margin-bottom: 26px;
   }
-  h1 .accent {
-    background: var(--grad);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  /* underline highlight on key phrase */
+  .hl {
+    background: linear-gradient(to bottom, transparent 60%, rgba(249,115,22,.22) 60%);
+    padding-bottom: 3px;
   }
+
   .lede {
-    font-size: 18.5px; color: var(--body);
-    max-width: 660px; margin: 0 0 40px; line-height: 1.75;
+    font-size: 17.5px; color: var(--body);
+    max-width: 540px; margin-bottom: 40px; line-height: 1.8;
   }
 
-  /* buttons */
-  .contact-pills { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 52px; }
-  .pill-btn {
-    font-size: 14.5px; font-weight: 600; color: #fff;
-    background: var(--grad);
-    padding: 13px 26px; border-radius: 8px; text-decoration: none;
-    transition: opacity .2s, transform .2s;
-    border: none;
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 54px; }
+  .btn {
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    padding: 12px 24px; border-radius: 8px; transition: all .2s;
   }
-  .pill-btn:hover { opacity: .85; transform: translateY(-2px); }
-  .pill-btn.ghost {
-    color: var(--ink); background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
-  }
-  .pill-btn.ghost:hover { border-color: var(--indigo); color: var(--indigo); background: rgba(129,140,248,0.08); }
+  .btn-primary { background: var(--ink); color: #fff; }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-ghost { color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--ink); }
 
-  /* hero meta bar */
-  .hero-meta {
-    display: grid; grid-template-columns: repeat(4, auto);
-    gap: 40px; padding-top: 38px;
-    border-top: 1px solid rgba(255,255,255,0.07);
+  .meta-strip {
+    display: flex; flex-wrap: wrap; gap: 32px;
+    padding-top: 38px; border-top: 1px solid var(--border);
   }
-  @media (max-width:720px) { .hero-meta { grid-template-columns: repeat(2, auto); } }
-  .hero-meta .k { color: var(--muted); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; margin-bottom: 7px; font-weight: 700; }
-  .hero-meta .v { color: var(--ink); font-size: 15px; font-weight: 500; }
+  .mi .mk { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 5px; }
+  .mi .mv { font-size: 15px; font-weight: 600; color: var(--ink); }
 
-  /* ── sections ── */
-  section { padding: 76px 0; }
-  section.divider { border-top: 1px solid rgba(255,255,255,0.06); }
-  .eyebrow-sm {
-    font-size: 11.5px; font-weight: 700; color: var(--indigo);
-    text-transform: uppercase; letter-spacing: .14em; margin-bottom: 14px;
+  /* right panel */
+  .hero-panel {
+    background: var(--off); border: 1px solid var(--border);
+    border-radius: 20px; padding: 28px;
+    position: relative; z-index: 1;
   }
+  .panel-head {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--muted); margin-bottom: 18px;
+  }
+  .panel-live { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px rgba(34,197,94,.5); }
+  .panel-rows { display: flex; flex-direction: column; gap: 10px; }
+  .pr {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 13px 16px; background: var(--white);
+    border: 1px solid var(--border); border-radius: 10px;
+  }
+  .pr .pk { font-size: 11.5px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .07em; }
+  .pr .pv { font-size: 13px; color: var(--ink); font-weight: 600; }
+  .panel-link {
+    display: block; text-align: center; text-decoration: none;
+    margin-top: 18px; padding: 14px;
+    background: var(--ink); color: #fff;
+    border-radius: 10px; font-size: 13.5px; font-weight: 600;
+    transition: background .2s;
+  }
+  .panel-link:hover { background: var(--accent); }
+
+  /* ── SECTION SHELL ───────────────────────── */
+  hr.rule { border: none; border-top: 1px solid var(--border); }
+  section { padding: 88px 0; }
+
+  .sl { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .sl-num { font-family: 'Space Grotesk'; font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .06em; }
+  .sl-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
+  .sl-tag { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .13em; color: var(--muted); }
+
   h2 {
-    font-family: 'Space Grotesk'; font-weight: 700; font-size: 34px;
-    margin: 0 0 20px; letter-spacing: -0.01em; color: var(--ink);
+    font-family: 'Space Grotesk'; font-weight: 700;
+    font-size: clamp(28px, 3.6vw, 44px);
+    letter-spacing: -.02em; color: var(--ink); line-height: 1.1;
+    margin-bottom: 18px;
   }
-  p.body-text { color: var(--body); font-size: 16.5px; max-width: 700px; line-height: 1.8; }
+  p.bt { color: var(--body); font-size: 16.5px; max-width: 680px; line-height: 1.8; }
 
-  /* ── fault list ── */
-  .fault-list { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 12px; max-width: 800px; }
+  /* ── PROBLEM: 2-col split ────────────────── */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  @media (max-width: 820px) { .split { grid-template-columns: 1fr; gap: 40px; } }
+
+  .fault-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .fault-list li {
-    display: flex; gap: 16px; align-items: flex-start;
-    font-size: 15.5px; color: var(--body); padding: 18px 22px;
-    background: var(--card); border: 1px solid var(--card-border);
-    border-radius: 12px; backdrop-filter: blur(6px);
-    transition: border-color .2s;
+    display: flex; gap: 14px; align-items: flex-start;
+    font-size: 14.5px; color: var(--body);
+    padding: 16px 18px; background: var(--white);
+    border: 1px solid var(--border); border-radius: 10px;
+    transition: border-color .2s, box-shadow .2s;
   }
-  .fault-list li:hover { border-color: rgba(248,113,113,0.35); }
-  .fault-list .mark { color: var(--red); font-weight: 700; flex-shrink: 0; font-size: 16px; }
+  .fault-list li:hover { border-color: #fca5a5; box-shadow: 0 4px 12px rgba(239,68,68,.06); }
+  .mark { color: var(--red); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
 
-  /* ── systems grid ── */
-  .sys-grid { margin-top: 38px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  @media (max-width:820px) { .sys-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width:560px) { .sys-grid { grid-template-columns: 1fr; } }
-  .sys-node {
-    background: var(--card); border: 1px solid var(--card-border);
-    padding: 26px 24px; border-radius: 16px; backdrop-filter: blur(8px);
-    transition: border-color .25s, transform .25s, box-shadow .25s;
+  /* ── ARCHITECTURE: bento ─────────────────── */
+  .bento {
+    margin-top: 44px;
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 14px;
   }
-  .sys-node:hover {
-    border-color: rgba(129,140,248,0.4);
+  @media (max-width: 820px) { .bento { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .bento { grid-template-columns: 1fr; } }
+
+  .bc {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+    transition: border-color .25s, box-shadow .25s, transform .25s;
+  }
+  .bc:hover {
+    border-color: rgba(249,115,22,.38);
+    box-shadow: 0 8px 30px rgba(249,115,22,.07);
     transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(99,102,241,0.12);
   }
-  .sys-node .id { font-size: 11px; font-weight: 700; color: var(--indigo); letter-spacing: .1em; }
-  .sys-node h3 { font-family: 'Space Grotesk'; font-size: 17px; font-weight: 600; margin: 10px 0; color: var(--ink); }
-  .sys-node p { font-size: 14px; color: var(--body); margin: 0; line-height: 1.65; }
-  .status-row { margin-top: 18px; display: flex; align-items: center; gap: 8px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; }
-  .dot.g { background: var(--green); box-shadow: 0 0 8px rgba(52,211,153,0.6); }
-  .dot.y { background: var(--yellow); box-shadow: 0 0 8px rgba(251,191,36,0.5); }
-  .status-row span { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; font-weight: 700; }
+  .bc.live { background: var(--a-soft); border-color: rgba(249,115,22,.2); }
+  .bc.live:hover { border-color: rgba(249,115,22,.55); box-shadow: 0 8px 30px rgba(249,115,22,.12); }
+  .bc-id { font-size: 10.5px; font-weight: 700; color: var(--accent); letter-spacing: .12em; margin-bottom: 14px; }
+  .bc h3 { font-family: 'Space Grotesk'; font-size: 16.5px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+  .bc p { font-size: 13.5px; color: var(--body); line-height: 1.65; }
+  .status { display: flex; align-items: center; gap: 7px; margin-top: 18px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .dot.g { background: var(--green); box-shadow: 0 0 6px rgba(34,197,94,.5); }
+  .dot.y { background: var(--yellow); }
+  .st { font-size: 10.5px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .09em; }
 
-  /* ── role cards ── */
-  .role-grid { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media (max-width:720px) { .role-grid { grid-template-columns: 1fr; } }
-  .role-grid .role-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
-  .role-card {
-    background: var(--card); border: 1px solid var(--card-border);
-    padding: 26px; border-radius: 16px; backdrop-filter: blur(8px);
-    transition: border-color .25s, transform .25s, box-shadow .25s;
-  }
-  .role-card:hover {
-    border-color: rgba(129,140,248,0.35);
-    transform: translateY(-3px);
-    box-shadow: 0 14px 36px rgba(99,102,241,0.1);
-  }
-  .role-card .tag { font-size: 11px; font-weight: 700; color: var(--indigo); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; display: block; }
-  .role-card p { font-size: 15px; color: var(--body); margin: 0; line-height: 1.75; }
-  .role-card.flag {
-    border-color: rgba(129,140,248,0.25);
-    background: linear-gradient(160deg, rgba(129,140,248,0.09), rgba(34,211,238,0.04) 60%), var(--card);
-  }
+  /* ── ROLE CARDS ──────────────────────────── */
+  .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
+  @media (max-width: 720px) { .role-grid { grid-template-columns: 1fr; } }
+  .role-grid .rc:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
-  /* ── stack ── */
-  .stack-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
-  .stack-pill {
-    font-size: 14px; font-weight: 600; color: var(--ink);
-    border: 1px solid var(--card-border); background: var(--card);
-    padding: 12px 20px; border-radius: 10px; backdrop-filter: blur(4px);
-    transition: border-color .2s, color .2s, box-shadow .2s;
+  .rc {
+    background: var(--white); border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    border-radius: 12px; padding: 26px 28px;
+    transition: border-left-color .2s, box-shadow .2s, transform .2s;
   }
-  .stack-pill:hover { border-color: var(--indigo); color: var(--indigo); box-shadow: 0 0 12px rgba(129,140,248,0.15); }
-  .stack-pill .dim { color: var(--muted); font-weight: 400; }
+  .rc:hover { border-left-color: var(--accent); box-shadow: 0 4px 20px rgba(0,0,0,.06); transform: translateY(-2px); }
+  .rc.flag { border-left-color: var(--accent); background: var(--a-soft); }
+  .rc .tag { font-size: 10.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .11em; margin-bottom: 10px; display: block; }
+  .rc p { font-size: 14.5px; color: var(--body); line-height: 1.75; }
 
-  /* ── outcomes ── */
-  .outcome-grid { margin-top: 32px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  @media (max-width:720px) { .outcome-grid { grid-template-columns: 1fr; } }
-  .outcome-card {
-    padding: 26px; border-radius: 16px; background: var(--card); border: 1px solid var(--card-border);
-    backdrop-filter: blur(8px);
-    transition: border-color .25s, transform .25s, box-shadow .25s;
+  /* ── STACK ───────────────────────────────── */
+  .stack-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .stag {
+    font-size: 14px; font-weight: 500; color: var(--ink);
+    padding: 10px 18px; border-radius: 8px;
+    background: var(--surf); border: 1px solid var(--border);
+    transition: all .2s; cursor: default;
   }
-  .outcome-card:hover { border-color: rgba(129,140,248,0.35); transform: translateY(-3px); box-shadow: 0 14px 36px rgba(99,102,241,0.1); }
-  .outcome-card .num {
-    display: inline-block; margin-bottom: 14px;
-    font-size: 22px; font-weight: 700;
-    background: var(--grad);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-  .outcome-card p { font-size: 15.5px; color: var(--ink); margin: 0; line-height: 1.7; }
+  .stag:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .stag span { color: var(--muted); font-weight: 400; }
+  .stag:hover span { color: rgba(255,255,255,.45); }
 
-  /* ── footer ── */
-  footer {
-    padding: 76px 0 96px; border-top: 1px solid rgba(255,255,255,0.06);
-    background: var(--bg-alt); position: relative;
+  /* ── OUTCOMES ────────────────────────────── */
+  .out-grid { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .out-grid { grid-template-columns: 1fr; } }
+  .oc {
+    padding: 28px; border-radius: 14px;
+    background: var(--surf); border: 1px solid var(--border);
+    transition: all .25s;
   }
-  .foot-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; }
-  .foot-note { font-size: 13.5px; color: var(--muted); max-width: 440px; line-height: 1.8; }
-  .foot-cta h3 { font-family: 'Space Grotesk'; font-size: 26px; color: var(--ink); margin: 0 0 22px; font-weight: 700; }
+  .oc:hover { background: var(--white); box-shadow: 0 6px 24px rgba(0,0,0,.07); transform: translateY(-3px); }
+  .oc-num {
+    font-family: 'Space Grotesk'; font-size: 30px; font-weight: 700;
+    color: var(--accent); display: block; margin-bottom: 14px; line-height: 1;
+  }
+  .oc p { font-size: 15px; color: var(--ink); line-height: 1.72; }
+
+  /* ── FOOTER ──────────────────────────────── */
+  footer { background: var(--ink); padding: 88px 0 104px; }
+  .foot-row { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 52px; }
+  footer h3 {
+    font-family: 'Space Grotesk'; font-weight: 700;
+    font-size: clamp(26px, 3vw, 40px);
+    color: #fff; margin-bottom: 28px; letter-spacing: -.025em; line-height: 1.1;
+  }
+  .fbtn {
+    font-size: 14px; font-weight: 600; text-decoration: none;
+    padding: 13px 26px; border-radius: 8px; transition: all .2s;
+    display: inline-block; margin-right: 12px; margin-bottom: 12px;
+  }
+  .fbtn-w { background: #fff; color: var(--ink); }
+  .fbtn-w:hover { background: var(--accent); color: #fff; }
+  .fbtn-g { color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
+  .fbtn-g:hover { border-color: rgba(255,255,255,.5); color: #fff; }
+  .foot-note { font-size: 13.5px; color: rgba(255,255,255,.28); max-width: 380px; line-height: 1.85; margin-top: 6px; }
 </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <header>
     <div class="nav-inner">
-      <div class="brandmark">USSAID ZAFAR<span class="role">Systems &amp; Automation</span></div>
-      <div class="navlinks">
+      <div class="brandmark">
+        <div class="brand-dot"></div>
+        USSAID ZAFAR
+      </div>
+      <nav class="navlinks">
         <a href="#work">Work</a>
         <a href="#role">Approach</a>
         <a href="#stack">Toolkit</a>
         <a href="#contact">Contact</a>
-      </div>
+      </nav>
     </div>
   </header>
 
+  <!-- HERO -->
+  <div class="hero-shell">
+    <div class="hero">
+      <div class="wm" aria-hidden="true">UZ</div>
+
+      <div class="hero-content">
+        <div class="eyebrow">
+          <div class="ey-line"></div>
+          Automation &amp; Systems Engineering
+        </div>
+
+        <h1>
+          I build the systems<br>
+          <span class="hl">growing businesses</span><br>
+          run on.
+        </h1>
+
+        <p class="lede">
+          CRM, automation, and executive-reporting infrastructure on GoHighLevel,
+          Monday.com, and Make — turning manual operations into workflows that
+          run and report on themselves.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="mailto:qureshiussaidzafar@gmail.com">Get in touch</a>
+          <a class="btn btn-ghost" href="https://linkedin.com/in/ussaidzafar" target="_blank">LinkedIn ↗</a>
+        </div>
+
+        <div class="meta-strip">
+          <div class="mi"><div class="mk">Focus</div><div class="mv">Systems Architecture</div></div>
+          <div class="mi"><div class="mk">Platforms</div><div class="mv">GHL · Monday · Make</div></div>
+          <div class="mi"><div class="mk">Also builds</div><div class="mv">Forms &amp; Funnels</div></div>
+          <div class="mi"><div class="mk">Status</div><div class="mv">Open to remote work</div></div>
+        </div>
+      </div>
+
+      <!-- right info panel -->
+      <div class="hero-panel">
+        <div class="panel-head">
+          <div class="panel-live"></div>
+          Current snapshot
+        </div>
+        <div class="panel-rows">
+          <div class="pr"><span class="pk">Focus</span><span class="pv">Systems Architecture</span></div>
+          <div class="pr"><span class="pk">Platforms</span><span class="pv">GHL · Monday · Make</span></div>
+          <div class="pr"><span class="pk">Builds</span><span class="pv">Forms &amp; Funnels</span></div>
+          <div class="pr"><span class="pk">Location</span><span class="pv">Remote</span></div>
+          <div class="pr"><span class="pk">Availability</span><span class="pv">Open for work</span></div>
+        </div>
+        <a class="panel-link" href="mailto:qureshiussaidzafar@gmail.com">qureshiussaidzafar@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
   <div class="wrap">
 
-    <section class="hero">
-      <div class="hero-orbs" aria-hidden="true">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-      </div>
-
-      <div class="eyebrow">Automation &amp; Systems Engineering</div>
-      <h1>I build the operating systems<br><span class="accent">growing businesses</span> outgrow spreadsheets on.</h1>
-      <p class="lede">
-        I design and build CRM, automation, and executive-reporting systems on GoHighLevel, Monday.com, and Make —
-        turning manual, memory-dependent operations into workflows that run themselves and report on themselves.
-      </p>
-
-      <div class="contact-pills">
-        <a class="pill-btn" href="mailto:qureshiussaidzafar@gmail.com">qureshiussaidzafar@gmail.com</a>
-        <a class="pill-btn ghost" href="https://linkedin.com/in/ussaidzafar" target="_blank">LinkedIn ↗</a>
-      </div>
-
-      <div class="hero-meta">
-        <div><div class="k">Focus</div><div class="v">Systems Architecture</div></div>
-        <div><div class="k">Platforms</div><div class="v">GHL &middot; Monday &middot; Make</div></div>
-        <div><div class="k">Also Build</div><div class="v">Forms &amp; Funnels</div></div>
-        <div><div class="k">Availability</div><div class="v">Open for remote work</div></div>
-      </div>
-    </section>
-
-    <section id="work" class="divider">
-      <div class="eyebrow-sm">Selected Work</div>
-      <h2>Project 01 — Multi-System Operations Rebuild</h2>
-      <p class="body-text">
-        A multi-location vehicle rental operator was scaling its fleet, its investor base, and its partner
-        network all at once — with no single source of truth. Here's the system I architected and built to replace it.
+    <!-- SELECTED WORK INTRO -->
+    <section id="work">
+      <div class="sl"><span class="sl-tag">Selected Work</span></div>
+      <h2>Project 01 — Multi-System<br>Operations Rebuild</h2>
+      <p class="bt">
+        A multi-location vehicle rental operator was scaling its fleet, investor base, and partner
+        network — all at once, with no single source of truth. Here's the system I architected and built.
       </p>
     </section>
 
-    <section class="divider" id="challenge">
-      <div class="eyebrow-sm">01 &middot; The Problem</div>
-      <h2>Growth had outrun the operation's memory.</h2>
-      <p class="body-text">
-        Every part of the business lived in someone's head, a spreadsheet, or a group chat.
-        There was no single source of truth, and no way for leadership to see the business without asking someone to go find out.
-      </p>
-      <ul class="fault-list">
-        <li><span class="mark">✕</span> No real-time visibility into fleet profitability, utilization, or collections — leadership found out about problems after they'd already cost money.</li>
-        <li><span class="mark">✕</span> Vehicle pickup and handoff relied entirely on a person remembering every step, with no record if something was missed.</li>
-        <li><span class="mark">✕</span> Investor, partner, and renter relationships were tangled together in the same pipeline, with no separation of data or process.</li>
-        <li><span class="mark">✕</span> Nothing was logged. If a payment failed, a pickup stalled, or a follow-up was missed, there was no trace of why.</li>
-      </ul>
+    <hr class="rule">
+
+    <!-- PROBLEM -->
+    <section id="challenge">
+      <div class="sl">
+        <span class="sl-num">01</span>
+        <div class="sl-dot"></div>
+        <span class="sl-tag">The Problem</span>
+      </div>
+      <div class="split">
+        <div>
+          <h2>Growth had outrun the operation's memory.</h2>
+          <p class="bt">
+            Every part of the business lived in someone's head, a spreadsheet, or a group chat.
+            No single source of truth — and no way for leadership to see the business without
+            asking someone to go find out.
+          </p>
+        </div>
+        <ul class="fault-list">
+          <li><span class="mark">✕</span> No real-time visibility into fleet profitability, utilization, or collections — leadership found out about problems after they'd already cost money.</li>
+          <li><span class="mark">✕</span> Vehicle handoff relied entirely on a person remembering every step, with no record if something was missed.</li>
+          <li><span class="mark">✕</span> Investor, partner, and renter relationships tangled in the same pipeline — no separation of data or process.</li>
+          <li><span class="mark">✕</span> Nothing was logged. Payment failures, stalled pickups, missed follow-ups — no trace of why.</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="divider" id="architecture">
-      <div class="eyebrow-sm">02 &middot; The Architecture</div>
+    <hr class="rule">
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture">
+      <div class="sl">
+        <span class="sl-num">02</span>
+        <div class="sl-dot"></div>
+        <span class="sl-tag">The Architecture</span>
+      </div>
       <h2>Six systems, one source of truth.</h2>
-      <p class="body-text">
-        Rather than patch the existing chaos, the brief called for a from-scratch architecture — one system
-        of record per function, aggregated data flowing one direction into an executive layer, and zero manual
-        re-entry anywhere in the chain.
+      <p class="bt">
+        A from-scratch architecture — one system of record per function, data flowing one direction
+        into an executive layer, zero manual re-entry anywhere in the chain.
       </p>
 
-      <div class="sys-grid">
-        <div class="sys-node">
-          <div class="id">SYSTEM 01</div>
+      <div class="bento">
+        <div class="bc live">
+          <div class="bc-id">SYSTEM 01</div>
           <h3>Executive Dashboard</h3>
           <p>Ten-metric KPI framework with automated Red/Yellow/Green escalation, built on Monday.com.</p>
-          <div class="status-row"><span class="dot g"></span><span>Live</span></div>
+          <div class="status"><span class="dot g"></span><span class="st">Live</span></div>
         </div>
-        <div class="sys-node">
-          <div class="id">SYSTEM 02</div>
+        <div class="bc live">
+          <div class="bc-id">SYSTEM 02</div>
           <h3>Automated Pickup System</h3>
           <p>Gated in-person &amp; no-contact handoff flows with auto-generated records and full event logging.</p>
-          <div class="status-row"><span class="dot g"></span><span>Live</span></div>
+          <div class="status"><span class="dot g"></span><span class="st">Live</span></div>
         </div>
-        <div class="sys-node">
-          <div class="id">SYSTEM 03</div>
+        <div class="bc">
+          <div class="bc-id">SYSTEM 03</div>
           <h3>Core CRM &amp; Payments</h3>
           <p>Unified customer service, billing, and a dynamic renter risk-scoring engine driving collections logic.</p>
-          <div class="status-row"><span class="dot y"></span><span>In build</span></div>
+          <div class="status"><span class="dot y"></span><span class="st">In build</span></div>
         </div>
-        <div class="sys-node">
-          <div class="id">SYSTEM 04</div>
+        <div class="bc">
+          <div class="bc-id">SYSTEM 04</div>
           <h3>Investor Relations CRM</h3>
           <p>Fully isolated capital pipeline with contract automation and a restricted investor-facing portal.</p>
-          <div class="status-row"><span class="dot y"></span><span>In build</span></div>
+          <div class="status"><span class="dot y"></span><span class="st">In build</span></div>
         </div>
-        <div class="sys-node">
-          <div class="id">SYSTEM 05</div>
+        <div class="bc">
+          <div class="bc-id">SYSTEM 05</div>
           <h3>Strategic Partnerships CRM</h3>
-          <p>Separate pipeline for referral and growth partners, isolated from renter and investor data entirely.</p>
-          <div class="status-row"><span class="dot y"></span><span>In build</span></div>
+          <p>Separate pipeline for referral and growth partners, isolated from renter and investor data.</p>
+          <div class="status"><span class="dot y"></span><span class="st">In build</span></div>
         </div>
-        <div class="sys-node">
-          <div class="id">SYSTEM 06</div>
+        <div class="bc">
+          <div class="bc-id">SYSTEM 06</div>
           <h3>Dedicated Lead Funnel</h3>
-          <p>Isolated intake funnel, phone line, and nurture sequence for a new community offering — zero crossover with core ops.</p>
-          <div class="status-row"><span class="dot y"></span><span>Scoped</span></div>
+          <p>Isolated intake funnel, phone line, and nurture sequence for a new community offering.</p>
+          <div class="status"><span class="dot y"></span><span class="st">Scoped</span></div>
         </div>
       </div>
     </section>
 
-    <section class="divider" id="role">
-      <div class="eyebrow-sm">03 &middot; What I Did</div>
-      <h2>My specific contribution to the build.</h2>
-      <p class="body-text">
-        On a project with multiple workstreams and a backend dev team running in parallel, my scope centered
+    <hr class="rule">
+
+    <!-- ROLE -->
+    <section id="role">
+      <div class="sl">
+        <span class="sl-num">03</span>
+        <div class="sl-dot"></div>
+        <span class="sl-tag">What I Did</span>
+      </div>
+      <h2>My specific contribution<br>to the build.</h2>
+      <p class="bt">
+        On a project with multiple workstreams and a backend dev team running in parallel, my scope centred
         on the executive layer, the pickup system, and keeping the whole build honest against what was actually signed off.
       </p>
 
       <div class="role-grid">
-        <div class="role-card">
+        <div class="rc">
           <span class="tag">Dashboard Architecture</span>
           <p>Designed and built the ten-KPI executive dashboard from scratch — status logic, automation rules, and the CEO-facing view — so leadership could assess the entire operation in under two minutes.</p>
         </div>
-        <div class="role-card">
+        <div class="rc">
           <span class="tag">Workflow Engineering</span>
           <p>Engineered the automated pickup workflows in GHL — vehicle auto-fill logic, gated entry conditions, and full event logging — removing manual data entry from the handoff process entirely.</p>
         </div>
-        <div class="role-card">
+        <div class="rc">
           <span class="tag">Forms &amp; Funnel Builds</span>
           <p>Designed and built the intake forms and multi-step funnels behind the lead-gen system — from field-level validation to the automated tagging and routing that fires on submission.</p>
         </div>
-        <div class="role-card flag">
+        <div class="rc flag">
           <span class="tag">Risk Catch</span>
-          <p>Ran a deep architectural review that surfaced a missing link between renter records and vehicle records — a gap that would have caused silent reporting errors downstream. Flagged it and scoped the fix before it shipped.</p>
+          <p>Ran a deep architectural review that surfaced a missing link between renter and vehicle records — a gap that would have caused silent reporting errors downstream. Flagged and scoped the fix before it shipped.</p>
         </div>
-        <div class="role-card">
+        <div class="rc">
           <span class="tag">Scope Discipline</span>
           <p>Managed delivery against a signed technical scope through a fast-moving client relationship — triaging new requests into future phases instead of letting scope creep erode the build.</p>
         </div>
       </div>
     </section>
 
-    <section class="divider" id="stack">
-      <div class="eyebrow-sm">04 &middot; Toolkit</div>
+    <hr class="rule">
+
+    <!-- STACK -->
+    <section id="stack">
+      <div class="sl">
+        <span class="sl-num">04</span>
+        <div class="sl-dot"></div>
+        <span class="sl-tag">Toolkit</span>
+      </div>
       <h2>Tools in play.</h2>
       <div class="stack-row">
-        <div class="stack-pill">GoHighLevel <span class="dim">// CRM + automation</span></div>
-        <div class="stack-pill">Monday.com <span class="dim">// exec reporting</span></div>
-        <div class="stack-pill">Make <span class="dim">// integration layer</span></div>
-        <div class="stack-pill">Stripe <span class="dim">// payments</span></div>
+        <div class="stag">GoHighLevel <span>// CRM + automation</span></div>
+        <div class="stag">Monday.com <span>// exec reporting</span></div>
+        <div class="stag">Make <span>// integration layer</span></div>
+        <div class="stag">Stripe <span>// payments</span></div>
       </div>
     </section>
 
-    <section class="divider" id="outcome">
-      <div class="eyebrow-sm">05 &middot; Outcome</div>
+    <hr class="rule">
+
+    <!-- OUTCOME -->
+    <section id="outcome">
+      <div class="sl">
+        <span class="sl-num">05</span>
+        <div class="sl-dot"></div>
+        <span class="sl-tag">Outcome</span>
+      </div>
       <h2>What changed.</h2>
-      <div class="outcome-grid">
-        <div class="outcome-card"><span class="num">→</span><p>Leadership can now see fleet performance, collections, and utilization in real time — instead of finding out weeks later.</p></div>
-        <div class="outcome-card"><span class="num">→</span><p>Vehicle handoff runs on a gated, logged workflow with zero manual re-entry, in place of a process that lived in one person's memory.</p></div>
-        <div class="outcome-card"><span class="num">→</span><p>A structural data gap was caught and corrected before go-live, instead of surfacing later as a financial or reporting problem.</p></div>
-        <div class="outcome-card"><span class="num">→</span><p>Investor and partner relationships now run on pipelines fully separate from renter operations — no more tangled data.</p></div>
+      <div class="out-grid">
+        <div class="oc"><span class="oc-num">01</span><p>Leadership can now see fleet performance, collections, and utilization in real time — instead of finding out weeks later.</p></div>
+        <div class="oc"><span class="oc-num">02</span><p>Vehicle handoff runs on a gated, logged workflow with zero manual re-entry, replacing a process that lived in one person's memory.</p></div>
+        <div class="oc"><span class="oc-num">03</span><p>A structural data gap was caught and corrected before go-live, instead of surfacing later as a financial or reporting problem.</p></div>
+        <div class="oc"><span class="oc-num">04</span><p>Investor and partner relationships now run on fully separate pipelines — no more tangled data with renter operations.</p></div>
       </div>
     </section>
 
-    <section class="divider">
-      <div class="eyebrow-sm">More Work</div>
-      <h2>Additional projects coming soon.</h2>
-      <p class="body-text">This portfolio is actively growing — reach out directly for a fuller walkthrough of past work, including proposal writing, funnel builds, and mobile/web development.</p>
+    <hr class="rule">
+
+    <section>
+      <div class="sl"><span class="sl-tag">More Work</span></div>
+      <h2>Additional projects<br>coming soon.</h2>
+      <p class="bt">This portfolio is actively growing — reach out directly for a fuller walkthrough of past work, including proposal writing, funnel builds, and mobile/web development.</p>
     </section>
 
   </div>
 
+  <!-- FOOTER -->
   <footer id="contact">
     <div class="wrap foot-row">
-      <div class="foot-cta">
-        <h3>Have a similar system to untangle?</h3>
-        <div class="contact-pills">
-          <a class="pill-btn" href="mailto:qureshiussaidzafar@gmail.com">qureshiussaidzafar@gmail.com</a>
-          <a class="pill-btn ghost" href="https://linkedin.com/in/ussaidzafar" target="_blank">LinkedIn ↗</a>
+      <div>
+        <h3>Have a system<br>to untangle?</h3>
+        <div>
+          <a class="fbtn fbtn-w" href="mailto:qureshiussaidzafar@gmail.com">qureshiussaidzafar@gmail.com</a>
+          <a class="fbtn fbtn-g" href="https://linkedin.com/in/ussaidzafar" target="_blank">LinkedIn ↗</a>
         </div>
       </div>
-      <div class="foot-note">
+      <p class="foot-note">
         Client details, figures, and identifying information in this case study have been generalized
         to respect a confidentiality agreement. Architecture, scope, and role descriptions reflect the actual build.
-      </div>
+      </p>
     </div>
   </footer>
 
