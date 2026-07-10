@@ -8,18 +8,18 @@
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
   :root{
-    --bg: #0a0e16;
-    --bg-alt: #0f1420;
-    --card: #141a28;
-    --card-border: #232b3d;
-    --ink: #f6f8fb;
-    --body: #c7cedb;
-    --muted: #8892a3;
-    --gold: #d9b25f;
-    --gold-soft: rgba(217, 178, 95, 0.12);
-    --green: #4ade80;
-    --yellow: #eab84d;
-    --red: #f87171;
+    --bg: #f5f7fb;
+    --bg-alt: #eef1f8;
+    --card: #ffffff;
+    --card-border: #dde2ed;
+    --ink: #111827;
+    --body: #374151;
+    --muted: #6b7280;
+    --gold: #b8892a;
+    --gold-soft: rgba(184, 137, 42, 0.10);
+    --green: #16a34a;
+    --yellow: #ca8a04;
+    --red: #dc2626;
   }
 
   * { box-sizing: border-box; }
@@ -36,17 +36,17 @@
 
   ::selection{ background: var(--gold-soft); color: var(--ink); }
 
-  .wrap{ max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+  .wrap{ max-width: 1320px; margin: 0 auto; padding: 0 48px; }
 
   /* ---------- header ---------- */
   header{
     position: sticky; top:0; z-index: 50;
-    background: rgba(10, 14, 22, 0.9);
+    background: rgba(245, 247, 251, 0.92);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--card-border);
   }
   .nav-inner{
-    max-width: 1040px; margin:0 auto; padding: 20px 32px;
+    max-width: 1320px; margin:0 auto; padding: 20px 48px;
     display:flex; align-items:center; justify-content:space-between;
   }
   .brandmark{ font-family:'Space Grotesk'; font-weight:700; font-size:16px; color: var(--ink); letter-spacing: -0.01em; }
@@ -75,11 +75,11 @@
 
   .contact-pills{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom: 48px; }
   .pill-btn{
-    font-size:14.5px; font-weight:600; color: var(--bg);
+    font-size:14.5px; font-weight:600; color: #ffffff;
     background: var(--gold);
     padding: 13px 22px; border-radius: 6px; text-decoration:none;
   }
-  .pill-btn:hover{ background: #e7c576; }
+  .pill-btn:hover{ background: #a07824; }
   .pill-btn.ghost{
     color: var(--ink); background: transparent; border: 1px solid var(--card-border);
   }
@@ -122,6 +122,7 @@
   .sys-node{
     background: var(--card); border: 1px solid var(--card-border);
     padding: 24px 22px; border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   }
   .sys-node .id{ font-size:12.5px; font-weight:700; color: var(--gold); letter-spacing:.06em; }
   .sys-node h3{ font-family:'Space Grotesk'; font-size:17px; font-weight:600; margin: 10px 0 10px 0; color: var(--ink); }
@@ -136,7 +137,7 @@
   .role-grid{ margin-top: 30px; display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
   @media (max-width:720px){ .role-grid{ grid-template-columns: 1fr; } }
   .role-grid .role-card:last-child:nth-child(odd){ grid-column: 1 / -1; }
-  .role-card{ background: var(--card); border: 1px solid var(--card-border); padding: 24px; border-radius: 12px; }
+  .role-card{ background: var(--card); border: 1px solid var(--card-border); padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
   .role-card .tag{ font-size:12.5px; font-weight:700; color: var(--gold); letter-spacing:.06em; text-transform:uppercase; margin-bottom:12px; display:block; }
   .role-card p{ font-size:15px; color: var(--body); margin:0; }
   .role-card.flag{ border-color: rgba(234, 184, 77, 0.5); background: linear-gradient(180deg, rgba(234,184,77,0.06), transparent 40%), var(--card); }
@@ -153,7 +154,7 @@
   /* ---------- outcomes ---------- */
   .outcome-grid{ margin-top: 30px; display:grid; grid-template-columns: repeat(2, 1fr); gap:18px; }
   @media (max-width:720px){ .outcome-grid{ grid-template-columns: 1fr; } }
-  .outcome-card{ padding: 22px; border-radius: 12px; background: var(--card); border: 1px solid var(--card-border); }
+  .outcome-card{ padding: 22px; border-radius: 12px; background: var(--card); border: 1px solid var(--card-border); box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
   .outcome-card .num{ color: var(--gold); font-size:18px; font-weight:700; margin-bottom:12px; display:block; }
   .outcome-card p{ font-size:15.5px; color: var(--ink); margin:0; line-height:1.6; }
 
