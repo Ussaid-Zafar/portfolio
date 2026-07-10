@@ -456,6 +456,62 @@
   .fbtn-g { color: rgba(255,255,255,.7); border: 1.5px solid rgba(255,255,255,.18); }
   .fbtn-g:hover { border-color: rgba(255,255,255,.5); color: #fff; }
   .foot-note { font-size: 13.5px; color: rgba(255,255,255,.28); max-width: 380px; line-height: 1.85; }
+
+  /* ── MOBILE RESPONSIVE ─────────────────────────────── */
+
+  /* nav inner padding */
+  @media (max-width: 768px) {
+    .nav-inner { padding: 0 20px; }
+  }
+
+  /* section + footer vertical breathing room */
+  @media (max-width: 768px) {
+    section { padding: 60px 0; }
+    footer  { padding: 60px 0 72px; }
+    .foot-row { gap: 36px; }
+    .foot-note { max-width: 100%; }
+  }
+
+  /* about photo: constrain when stacked so it doesn't become a full-width banner */
+  @media (max-width: 860px) {
+    .about-grid img { max-width: 220px; }
+    .about-stats { gap: 24px; }
+  }
+
+  /* outcome numbers — text labels need smaller size on narrow screens */
+  @media (max-width: 600px) {
+    .oc-num { font-size: 20px; }
+  }
+
+  /* services CTA block: stack vertically, full-width button */
+  @media (max-width: 600px) {
+    .svc-cta { flex-direction: column; align-items: flex-start; padding: 28px; }
+    .svc-cta .btn { width: 100%; text-align: center; }
+  }
+
+  /* GHL card: stack label/badges vertically */
+  @media (max-width: 560px) {
+    .ghl-card { flex-direction: column; gap: 16px; }
+    .ghl-badges { justify-content: flex-start; }
+  }
+
+  /* CTA row: stack buttons on very small screens */
+  @media (max-width: 400px) {
+    .cta-row { flex-direction: column; }
+    .cta-row .btn { text-align: center; }
+  }
+
+  /* hero tagline: tighten line height on small screens */
+  @media (max-width: 480px) {
+    .hero-tagline { line-height: 1.25; }
+    .lede { font-size: 15.5px; }
+    .meta-strip { gap: 20px; }
+  }
+
+  /* ticker: slightly slower on mobile so it's readable */
+  @media (max-width: 480px) {
+    .ticker-track { animation-duration: 20s; }
+  }
 </style>
 </head>
 <body>
