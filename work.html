@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ussaid Zafar · Systems & Automation Engineer</title>
+<title>Selected Work · Ussaid Zafar</title>
 <meta name="description" content="Systems & Automation Engineer. I build CRM infrastructure, automated workflows, and executive reporting systems on GoHighLevel, Monday.com, and Make.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
@@ -145,6 +145,13 @@
   .ribbon .v { font-family: var(--display); font-weight: 500; font-size: 23px; color: var(--ink); line-height: 1.1; }
   @media (max-width: 700px) { .ribbon { grid-template-columns: 1fr 1fr; } .ribbon .cell:nth-child(3){ border-left:none; padding-left:0;} .ribbon .cell{ padding:16px;} }
 
+  /* ── CASE-STUDY PAGE HEADER ─────────────────────────── */
+  .backlink { display: inline-block; color: var(--body); transition: color .3s; }
+  .backlink:hover { color: var(--accent); }
+  .case-intro { margin: 44px 0 8px; }
+  .case-hero { font-family: var(--display); font-weight: 600; font-size: clamp(40px, 7vw, 92px);
+    line-height: .98; letter-spacing: -.02em; color: var(--ink); margin-top: 16px; max-width: 15ch; text-wrap: balance; }
+
   /* ── SECTIONS ───────────────────────────────────────── */
   section { padding: 104px 0; }
   .sec-head { display: flex; align-items: baseline; gap: 20px; margin-bottom: 50px; }
@@ -271,13 +278,13 @@
 
   <!-- ── VERTICAL RAIL ── -->
   <aside class="rail">
-    <a class="rail-mono" href="#top" data-cursor>UZ</a>
+    <a class="rail-mono" href="index.html" data-cursor>UZ</a>
     <div class="rail-name">Ussaid Zafar — Systems Engineer</div>
     <nav class="rail-nav">
       <div class="rail-prog"><span id="prog"></span></div>
-      <a href="#about" data-spy="about" class="active" data-cursor>01<span class="rn-lab">About</span></a>
-      <a href="work.html" data-cursor>02<span class="rn-lab">Work</span></a>
-      <a href="work.html#services" data-cursor>03<span class="rn-lab">Services</span></a>
+      <a href="index.html#about" data-cursor>01<span class="rn-lab">About</span></a>
+      <a href="#work" data-spy="work" class="active" data-cursor>02<span class="rn-lab">Work</span></a>
+      <a href="#services" data-spy="services" data-cursor>03<span class="rn-lab">Services</span></a>
       <a href="#contact" data-spy="contact" data-cursor>04<span class="rn-lab">Contact</span></a>
     </nav>
     <div class="rail-foot">
@@ -288,65 +295,160 @@
 
   <!-- mobile top bar -->
   <header class="topbar">
-    <a class="tb-brand" href="#top">Ussaid Zafar</a>
+    <a class="tb-brand" href="index.html">Ussaid Zafar</a>
     <nav class="tb-links">
-      <a href="#about">About</a><a href="work.html">Work</a><a href="work.html#services">Services</a><a href="#contact">Contact</a>
+      <a href="index.html#about">About</a><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a>
     </nav>
   </header>
 
   <div class="page">
-    <!-- ── HERO ── -->
+    <!-- ── PAGE HEADER ── -->
+    <div class="wrap" style="padding-top:40px">
+      <a class="lbl backlink" href="index.html" data-cursor>← Ussaid Zafar / Index</a>
+      <div class="case-intro">
+        <span class="lbl" style="color:var(--accent)">Case Study 01</span>
+        <h1 class="case-hero">A rental operation,<br>rebuilt as <span class="fancy">one system.</span></h1>
+      </div>
+    </div>
+
+    <!-- ── WORK ── -->
     <div class="wrap">
-      <section class="hero">
-        <div class="eyebrow">
-          <span class="lbl">Automation &amp; Systems Engineering</span>
-          <span class="ln"></span>
-          <span class="lbl">Est. 2024</span>
+      <section id="work">
+        <div class="sec-head rv">
+          <span class="sec-idx">(01)</span>
+          <h2 class="sec-title">The <span class="fancy">Brief</span></h2>
+          <span class="sec-note lbl">Project 01 / Ongoing</span>
         </div>
-        <h1 class="rv">If your team still does it by hand, I build the system that <span class="fancy">replaces it.</span></h1>
-        <div class="hero-lower">
-          <p class="hero-lede rv">CRM, automation, and executive-reporting infrastructure on
-            <b>GoHighLevel</b>, <b>Monday.com</b>, and <b>Make</b>. I turn manual operations into
-            workflows that run, and report, on their own.</p>
-          <div class="hero-cta rv">
-            <a class="btn btn-fill" href="#contact" data-cursor data-magnet>Start a project</a>
-            <a class="btn btn-line" href="work.html" data-cursor data-magnet>See the work</a>
+        <p class="lead-p rv">A multi-location <b>vehicle rental operator</b> was scaling its fleet, investor
+          base, and partner network all at once, with no single source of truth. I architected and built
+          the operating system underneath it: <b>six systems, one flow of data.</b></p>
+
+        <div class="case rv">
+          <div class="case-grid">
+            <div>
+              <span class="ff-tag lbl">The Problem</span>
+              <h3>Growth had outrun the operation's memory.</h3>
+              <p class="lead-p" style="font-size:16px">Every part of the business lived in someone's head, a
+                spreadsheet, or a group chat. No single source of truth, and no way for leadership to see the
+                business without asking someone to go find out.</p>
+            </div>
+            <ul class="fault">
+              <li><span class="x">→</span> No real-time visibility into fleet profitability, utilization, or collections. Leadership found out about problems after they'd already cost money.</li>
+              <li><span class="x">→</span> Vehicle handoff relied entirely on a person remembering every step, with no record if something was missed.</li>
+              <li><span class="x">→</span> Investor, partner, and renter relationships tangled in one pipeline, with no separation of data or process.</li>
+              <li><span class="x">→</span> Nothing was logged. Payment failures, stalled pickups, and missed follow-ups left no trace of why.</li>
+            </ul>
           </div>
         </div>
-        <div class="ribbon rv">
-          <div class="cell"><div class="k lbl">Systems Built</div><div class="v">6 full builds</div></div>
-          <div class="cell"><div class="k lbl">Approach</div><div class="v">End to end</div></div>
-          <div class="cell"><div class="k lbl">Primary Stack</div><div class="v">GoHighLevel</div></div>
-          <div class="cell"><div class="k lbl">Status</div><div class="v">Open for work</div></div>
+
+        <div class="sec-head rv" style="margin-top:88px">
+          <span class="sec-idx">(02)</span>
+          <h2 class="sec-title">The <span class="fancy">Architecture</span></h2>
+          <span class="sec-note lbl">Six systems · one source of truth</span>
+        </div>
+        <div class="rows rv">
+          <div class="row" data-cursor>
+            <div class="row-idx">01</div>
+            <div class="row-main"><h3>Executive Dashboard</h3><p>Ten-metric KPI framework with automated Red / Yellow / Green escalation, built on Monday.com.</p></div>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end"><div class="row-tags"><span class="row-tag">Monday.com</span><span class="row-tag">KPI</span></div><span class="row-status"><span class="st-dot st-live"></span>Live</span></div>
+          </div>
+          <div class="row" data-cursor>
+            <div class="row-idx">02</div>
+            <div class="row-main"><h3>Automated Pickup System</h3><p>Gated in-person and no-contact handoff flows with auto-generated records and full event logging.</p></div>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end"><div class="row-tags"><span class="row-tag">GHL</span><span class="row-tag">Workflow</span></div><span class="row-status"><span class="st-dot st-live"></span>Live</span></div>
+          </div>
+          <div class="row" data-cursor>
+            <div class="row-idx">03</div>
+            <div class="row-main"><h3>Core CRM &amp; Payments</h3><p>Unified customer service, billing, and a dynamic renter risk-scoring engine driving collections logic.</p></div>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end"><div class="row-tags"><span class="row-tag">GHL</span><span class="row-tag">Stripe</span></div><span class="row-status"><span class="st-dot st-build"></span>In build</span></div>
+          </div>
+          <div class="row" data-cursor>
+            <div class="row-idx">04</div>
+            <div class="row-main"><h3>Investor Relations CRM</h3><p>Fully isolated capital pipeline with contract automation and a restricted investor-facing portal.</p></div>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end"><div class="row-tags"><span class="row-tag">CRM</span><span class="row-tag">Portal</span></div><span class="row-status"><span class="st-dot st-build"></span>In build</span></div>
+          </div>
+          <div class="row" data-cursor>
+            <div class="row-idx">05</div>
+            <div class="row-main"><h3>Strategic Partnerships CRM</h3><p>Separate pipeline for referral and growth partners, isolated from renter and investor data.</p></div>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end"><div class="row-tags"><span class="row-tag">CRM</span><span class="row-tag">Pipeline</span></div><span class="row-status"><span class="st-dot st-build"></span>In build</span></div>
+          </div>
+          <div class="row" data-cursor>
+            <div class="row-idx">06</div>
+            <div class="row-main"><h3>Dedicated Lead Funnel</h3><p>Isolated intake funnel, phone line, and nurture sequence for a new community offering.</p></div>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end"><div class="row-tags"><span class="row-tag">Funnel</span><span class="row-tag">Nurture</span></div><span class="row-status"><span class="st-dot st-scope"></span>Scoped</span></div>
+          </div>
+        </div>
+
+        <div class="flow-feature rv">
+          <div class="flow-panel">
+            <div class="flow-head"><span class="live" style="animation:none"></span><span class="lbl">Lead Lifecycle · Automated</span></div>
+            <svg class="flow-svg" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A lead's automated journey from paid ad to booked call.">
+              <path id="lp3" class="fx-line" d="M150 -8 L150 372"/>
+              <circle r="5" class="fx-dot"><animateMotion dur="5.5s" begin="0s" repeatCount="indefinite" calcMode="linear"><mpath href="#lp3"/></animateMotion></circle>
+              <circle r="5" class="fx-dot"><animateMotion dur="5.5s" begin="2.75s" repeatCount="indefinite" calcMode="linear"><mpath href="#lp3"/></animateMotion></circle>
+              <rect x="45" y="12" width="210" height="46" rx="12" class="fx-box"/><text x="150" y="32" class="fx-t" text-anchor="middle" font-size="12.5">Paid Ad</text><text x="150" y="47" class="fx-sub" text-anchor="middle" font-size="9">TRAFFIC IN</text>
+              <rect x="45" y="90" width="210" height="46" rx="12" class="fx-box"/><text x="150" y="110" class="fx-t" text-anchor="middle" font-size="12.5">Funnel + Form</text><text x="150" y="125" class="fx-sub" text-anchor="middle" font-size="9">LEAD CAPTURED</text>
+              <rect x="45" y="168" width="210" height="46" rx="12" class="fx-box"/><text x="150" y="188" class="fx-t" text-anchor="middle" font-size="12.5">CRM Record</text><text x="150" y="203" class="fx-sub" text-anchor="middle" font-size="9">TAGGED + SCORED</text>
+              <rect x="45" y="246" width="210" height="46" rx="12" class="fx-engine"/><text x="150" y="266" class="fx-th" text-anchor="middle" font-size="12.5">Nurture Flow</text><text x="150" y="281" class="fx-subA" text-anchor="middle" font-size="9">SMS · EMAIL</text>
+              <rect x="45" y="324" width="210" height="46" rx="12" class="fx-win"/><text x="150" y="344" class="fx-tg" text-anchor="middle" font-size="12.5">Booked Call</text><text x="150" y="359" class="fx-subG" text-anchor="middle" font-size="9">CONVERTED</text>
+              <rect x="43" y="10" width="214" height="50" rx="13" class="fx-ring"><animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.05;0.11;0.17;1" dur="5.5s" repeatCount="indefinite"/></rect>
+              <rect x="43" y="88" width="214" height="50" rx="13" class="fx-ring"><animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.26;0.32;0.38;1" dur="5.5s" repeatCount="indefinite"/></rect>
+              <rect x="43" y="166" width="214" height="50" rx="13" class="fx-ring"><animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.46;0.52;0.58;1" dur="5.5s" repeatCount="indefinite"/></rect>
+              <rect x="43" y="244" width="214" height="50" rx="13" class="fx-ring"><animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.67;0.73;0.79;1" dur="5.5s" repeatCount="indefinite"/></rect>
+              <rect x="43" y="322" width="214" height="50" rx="13" class="fx-ring-g"><animate attributeName="opacity" values="0;0;0.9;0;0" keyTimes="0;0.88;0.94;0.99;1" dur="5.5s" repeatCount="indefinite"/></rect>
+            </svg>
+            <p class="flow-cap">Paid ad to booked call: captured, recorded, and nurtured on autopilot.</p>
+          </div>
+          <div class="flow-explain">
+            <span class="ff-tag lbl">System 06 · Spotlight</span>
+            <h3>A lead that nurtures itself.</h3>
+            <p>The dedicated lead funnel runs end to end without anyone touching it. A paid ad drives traffic
+              into an isolated landing funnel; the form capture spins up a fully tagged and scored CRM record;
+              and an automated SMS and email sequence nurtures the lead until it converts into a booked call.</p>
+            <p>Every stage is logged, nothing is re-keyed by hand, and the sales team only sees a lead once it's
+              warm. That's the difference between chasing cold contacts and answering ones that are ready to talk.</p>
+          </div>
+        </div>
+
+        <div class="sec-head rv" style="margin-top:88px">
+          <span class="sec-idx">(03)</span>
+          <h2 class="sec-title">What I <span class="fancy">did</span></h2>
+        </div>
+        <div class="grid-2 rv">
+          <div class="tile" data-cursor><span class="t-tag lbl">Dashboard Architecture</span><p>Designed and built the ten-KPI executive dashboard from scratch, including status logic, automation rules, and the CEO-facing view, so leadership could assess the entire operation in under two minutes.</p></div>
+          <div class="tile" data-cursor><span class="t-tag lbl">Workflow Engineering</span><p>Engineered the automated pickup workflows in GHL, covering vehicle auto-fill logic, gated entry conditions, and full event logging, removing manual data entry from the handoff process entirely.</p></div>
+          <div class="tile" data-cursor><span class="t-tag lbl">Forms &amp; Funnel Builds</span><p>Designed and built the intake forms and multi-step funnels behind the lead-gen system, from field-level validation to the automated tagging and routing that fires on submission.</p></div>
+          <div class="tile flag" data-cursor><span class="t-tag lbl">Risk Catch</span><p>Ran a deep architectural review that surfaced a missing link between renter and vehicle records, a gap that would have caused silent reporting errors downstream. Flagged and scoped the fix before it shipped.</p></div>
+        </div>
+
+        <div class="sec-head rv" style="margin-top:88px">
+          <span class="sec-idx">(04)</span>
+          <h2 class="sec-title">What <span class="fancy">changed</span></h2>
+        </div>
+        <div class="out rv">
+          <div class="o"><div class="num" data-count="10">0<span class="u"> KPIs</span></div><p>Leadership now tracks fleet performance, collections, and utilization in a live 10-metric dashboard, instead of finding out about problems weeks later.</p></div>
+          <div class="o"><div class="num" data-count="0">0<span class="u"> Manual</span></div><p>Vehicle handoff runs on a fully gated, event-logged workflow with zero manual data entry, replacing a process that lived in one person's memory.</p></div>
+          <div class="o"><div class="num" style="font-size:34px">Pre-launch</div><p>A structural gap between renter and vehicle records was caught during architecture review and fixed before go-live, not after it became a reporting error.</p></div>
+          <div class="o"><div class="num" style="font-size:34px">Clean split</div><p>Investors, partners, and renters now each run on their own fully isolated CRM pipeline, replacing one tangled system where everything was mixed.</p></div>
         </div>
       </section>
     </div>
 
-    <!-- ── ABOUT ── -->
+    <!-- ── SERVICES ── -->
     <div class="wrap">
-      <section id="about">
-        <div class="sec-head rv"><span class="sec-idx">(01)</span><h2 class="sec-title">About</h2></div>
-        <div class="about-grid">
-          <div class="about-photo rv" data-cursor>
-            <img src="photo.jpg" alt="Ussaid Zafar">
-            <div class="ph-cap">Ussaid Zafar · Pakistan</div>
-          </div>
-          <div class="about-body rv">
-            <span class="big">Software engineer turned systems architect.</span>
-            <p>I started out building websites and web applications as a software engineer. In 2025, I made the
-              shift to automation and systems architecture, drawn to the idea that well-designed systems multiply
-              a team's output without adding headcount.</p>
-            <p>I now build <b>CRM infrastructure, automated workflows, and executive reporting systems</b> for
-              growing businesses that have outgrown their manual processes. My background in software development
-              means I work closely with dev teams and understand technical constraints. I'm not just configuring
-              tools; I'm designing how the pieces fit together end to end.</p>
-            <div class="about-stats">
-              <div><div class="num">6</div><div class="lab lbl">Systems architected</div></div>
-              <div><div class="num">E2E</div><div class="lab lbl">Full builds only</div></div>
-              <div><div class="num">GHL</div><div class="lab lbl">Primary platform</div></div>
-              <div><div class="num">2024</div><div class="lab lbl">Building since</div></div>
-            </div>
-          </div>
+      <section id="services">
+        <div class="sec-head rv">
+          <span class="sec-idx">(05)</span>
+          <h2 class="sec-title">What I <span class="fancy">build</span></h2>
+          <span class="sec-note lbl">Four core disciplines</span>
+        </div>
+        <p class="lead-p rv">Every engagement starts with understanding the actual problem, not just the tool
+          request. If your bottleneck maps to any of these, I can build the system that solves it.</p>
+        <div class="rows rv" style="margin-top:46px">
+          <a class="row" href="#contact" data-cursor><div class="row-idx">01</div><div class="row-main"><h3>CRM Architecture</h3><p>Full CRM architecture on GoHighLevel: contact record structure, pipeline stages, automated tagging, role-based routing, and the workflow logic that connects it all.</p></div><div class="row-tags"><span class="row-tag">GoHighLevel</span></div></a>
+          <a class="row" href="#contact" data-cursor><div class="row-idx">02</div><div class="row-main"><h3>Workflow Automation</h3><p>Trigger-based automation that removes manual steps from your operation: payment follow-ups, handoff sequences, lead nurture flows, and escalation logic on GHL and Make.</p></div><div class="row-tags"><span class="row-tag">GHL · Make</span></div></a>
+          <a class="row" href="#contact" data-cursor><div class="row-idx">03</div><div class="row-main"><h3>Executive Reporting</h3><p>Automated KPI frameworks with Red / Yellow / Green escalation, leadership-facing views, and live data flowing in from your CRM and payments stack.</p></div><div class="row-tags"><span class="row-tag">Monday.com</span></div></a>
+          <a class="row" href="#contact" data-cursor><div class="row-idx">04</div><div class="row-main"><h3>Funnels &amp; Intake</h3><p>Multi-step intake funnels and forms with conditional logic, field-level validation, and automated routing that fires the right sequence on submission.</p></div><div class="row-tags"><span class="row-tag">Funnels</span></div></a>
         </div>
       </section>
     </div>
